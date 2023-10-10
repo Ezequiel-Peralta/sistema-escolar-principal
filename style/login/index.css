@@ -39,7 +39,7 @@ body {
     position: relative;
     overflow: hidden;
     width: 1200px;
-    height: 600px;
+    height: 90%;
     max-width: 100%;
 }
 
@@ -222,7 +222,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: row !important;
-    
+
 }
 .logo i.fa-school {
     margin-right: 5px; 
@@ -239,14 +239,14 @@ body {
 
 .toggle-panel.logo {
     transform: translateX(100%);
-    margin: -270px 0 0 30px;  
+    margin: -310px 0 0 30px;  
     padding-right: 40px;
     padding-left: 60px;
 }
 
 .container.active .toggle-panel.logo {
     transform: translateX(0%);
-    margin: -270px 0 0 -30px;
+    margin: -310px 0 0 -30px;
     padding-left: 40px;
     padding-right: 60px;
 }
@@ -625,7 +625,7 @@ body {
 
 .signup-form-content {
     width: 100%;
-    margin: 3% 21% 0 0;
+    margin: 9% 21% 0 0;
 }
 
 .input-container {
@@ -792,6 +792,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     align-items: center;
     width: 100%;
+    padding: 20px 0 0 0;
 }
 
 .pagination-btns .nextPage {
@@ -891,7 +892,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .stage-btns-5 {
-    margin-top: 21.6%;
+    margin-top: 23.3%;
     margin-left: 20%;
 }
 
@@ -1396,7 +1397,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .localidad-checkout-correct {
     position: absolute;
-    top: 44%;
+    top: 45.9%;
     transform: translateY(-90%);
     right: -10.2%;
     color: #52ec61;
@@ -1708,10 +1709,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     align-items: center;
     background-color: transparent;
     margin-bottom: -130px;
-    margin-left: 0px;
     background-color: #eee;
     border-radius: 8px;
-} 
+    margin-top: -10px;
+    padding: 0 0 0 80px;
+} .btn-images {
+    margin: 0 0 0 0;
+}
+
+
+
 /* .cointainer-update-image label {
     font-size: 12px;
     font-weight: bolder;
@@ -1730,7 +1737,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     background-color: #ae0e30;
     bottom: 12px;
-    right: 69.9%;
+    right: 64.5%;
     border-radius: 3px;
     color: #fff;
     padding: 8px 10px;
@@ -1754,7 +1761,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     background-color: #ae0e30;
     bottom: 12px;
-    right: 54.2%;
+    right: 48.9%;
     border-radius: 3px;
     color: #fff;
     padding: 8px 15px;
@@ -1792,7 +1799,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     background-color: #fff;
     bottom: 12px;
-    right: 20.5%;
+    right: 14.9%;
     border-radius: 3px;
     color: #000000;
     padding: 8px 10px;
@@ -1923,6 +1930,7 @@ img {
     /* background-color: rgba(50, 250, 10, 0.568); */
     border-radius: 30px;
     z-index: 9999; 
+    color: #fff;
 }
 
 .btn-open-slidemenu {
@@ -1963,7 +1971,48 @@ img {
     opacity: 0;
 }
 
-@media screen and (max-width: 700px) {
+
+
+.logo-txt-slidemenu {
+    font-weight: bolder;
+    padding: 0 0 0 5px;
+    font-size: 15px;
+}
+
+/* Estilos para pantallas grandes o de escritorio */
+.logo-slidemenu {
+    position: absolute;
+    width: 300px;
+    height: 70%;
+    display: flex;
+    top: 18px;
+    left: 75px;
+} 
+
+.slide-sigin {
+    position: absolute;
+    width: 350px;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    top: 15%;
+    right: 68.6%;
+    transition: all 0.6s ease-in-out;
+    z-index: 2;
+}
+
+
+
+/* Dispositivos Android */
+/* Tamaño común para teléfonos Android */
+
+
+/* Tablet (portrait) */
+/* @media screen and (max-width: 768px) {
+    
     .toggle-slidemenu {
         display: initial;
         height: 100%;
@@ -1972,22 +2021,257 @@ img {
         display: none;
     }
 
-    /* Centrar el elemento .sign-in */
     .sign-in {
         margin: -70px 0px 0 0;
         padding: 0 0 0 1px;
-        height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+        height: 100vh;
+    }
+
+    .sign-in .wrap-forgot-password .forgot-password-anchor:hover::after,
+    .sign-in .wrap-forgot-password .forgot-password-anchor:focus::after {
+        padding: 0% 16%;
+        transition: all 200ms ease-in;
+    }
+
+    .logo-slidemenu {
+        position: absolute;
+        width: 100%; 
+        height: auto; 
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        top: 0;
+        left: 0;
+        margin: 0; 
+    }
+
+    .slide-sigin {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        top: 15%; 
+        right: 0;
+    }
+} */
+
+
+
+
+
+/* 1536px */
+@media screen and (max-width: 1500px) {
+    .toggle-panel.logo {
+        transform: translateX(100%);
+        margin: -260px 0 0 30px;  
+        padding-right: 40px;
+        padding-left: 60px;
+    }
+    
+    .container.active .toggle-panel.logo {
+        transform: translateX(0%);
+        margin: -260px 0 0 -30px;
+        padding-left: 40px;
+        padding-right: 60px;
+    }
+    
+}
+
+@media screen and (max-width: 1500px) and (max-height: 760px)  {
+    .toggle-panel.logo {
+        transform: translateX(100%);
+        margin: -310px 0 0 30px;  
+        padding-right: 40px;
+        padding-left: 60px;
+    }
+    
+    .container.active .toggle-panel.logo {
+        transform: translateX(0%);
+        margin: -310px 0 0 -30px;
+        padding-left: 40px;
+        padding-right: 60px;
+    }
+    
+}
+
+@media screen and (max-width: 1024px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+ 
+}
+
+@media screen and (max-width: 660px) {
+    .toggle-slidemenu {
+        display: initial;
+        height: 100%;
+    }
+    .toggle-container {
+        display: none;
+    }
+
+    .sign-in {
+        margin: -70px 0px 0 0;
+        padding: 0 0 0 1px;
+        height: 105vh;
+    }
+
+     .sign-in .wrap-forgot-password .forgot-password-anchor:hover::after,
+    .sign-in .wrap-forgot-password .forgot-password-anchor:focus::after {
+        padding: 0% 10vh;
+        transition: all 200ms ease-in;
+    }
+
+    .slide-sigin {
+        /* position: absolute; */
+        width: 350px;
+        height: 70%;
+        /* display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center; */
+        top: 15%;
+        right: 68.6%;
+        /* transition: all 0.6s ease-in-out;
+        z-index: 2; */
     }
 }
-@media screen and (max-width: 420px) {
-    .container {
-        height: 90%;
+
+@media screen and (max-width: 560px) {
+    .sign-in .wrap-forgot-password .forgot-password-anchor:hover::after,
+    .sign-in .wrap-forgot-password .forgot-password-anchor:focus::after {
+        padding: 0% 10vh;
+        transition: all 200ms ease-in;
+    }
+
+    .logo-slidemenu {
+        width: 300px;
+        height: 70%;
+        top: 18px;
+        left: 130px;
+    }
+
+    .slide-sigin {
+        width: 350px;
+        height: 70%;
+        top: 15%;
+        right: 63.5%;
     }
 
 }
 
-@media screen and (max-width: 1100px) {
-    .container {
-        height: 90%;
+@media screen and (max-width: 480px) {
+    .sign-in .wrap-forgot-password .forgot-password-anchor:hover::after,
+    .sign-in .wrap-forgot-password .forgot-password-anchor:focus::after {
+        padding: 0% 9vh;
+        transition: all 200ms ease-in;
     }
+
+    
+    .slide-sigin {
+        width: 350px;
+        height: 70%;
+        top: 15%;
+        right: 69.2%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .logo-slidemenu {
+        width: 300px;
+        height: 70%;
+        top: 18px;
+        left: 82px;
+    }
+
+    .slide-sigin {
+        width: 350px;
+        height: 70%;
+        top: 15%;
+        right: 67.7%;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .logo-slidemenu {
+        width: 300px;
+        height: 70%;
+        top: 18px;
+        left: 65px;
+    }
+
+    .slide-sigin {
+        width: 350px;
+        height: 70%;
+        top: 15%;
+        right: 69%;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .logo-slidemenu {
+        width: 300px;
+        height: 70%;
+        top: 18px;
+        left: 65px;
+    }
+
+    .slide-sigin {
+        width: 350px;
+        height: 70%;
+        top: 15%;
+        right: 69%;
+    }
+}
+
+@media screen and (max-width: 400px) and (max-height: 680px) {
+    .logo-slidemenu {
+        width: 300px;
+        height: 70%;
+        top: 18px;
+        left: 65px;
+    }
+
+    .slide-sigin {
+        width: 350px;
+        height: 70%;
+        top: 15%;
+        right: 69.7%;
+    }
+
+    .sign-in .wrap-forgot-password .forgot-password-anchor:hover::after,
+    .sign-in .wrap-forgot-password .forgot-password-anchor:focus::after {
+        padding: 0% 10vh; /* Padding izquierdo y derecho del 5% */
+        transition: all 200ms ease-in;
+    }
+}
+
+@media screen and (max-width: 360px) and (max-height: 800px){
+    .sign-in input {
+        width: 300px; /* Utiliza un 94% del ancho disponible para los input */
+    }    
+
+    .logo-slidemenu {
+        width: 300px;
+        height: 70%;
+        top: 18px;
+        left: 80px;
+    } .logo-slidemenu span, .schoool-slidemenu {
+        font-size:12px;
+    }
+
+    .slide-sigin {
+        width: 350px;
+        height: 70%;
+        top: 15%;
+        right: 70.4%;
+    } 
 }

@@ -39,13 +39,22 @@
             </button>
             <div class="container-slidemenu hiddenElement">
                 <div class="slidemenu">
-                    
+                    <div class="logo-slidemenu">
+                        <i class="fa-solid fa-school schoool-slidemenu"></i>
+                        <span class="logo-txt-slidemenu">INSTITUTO PRIVADO DEAN FUNES</span>
+                    </div>
+                    <div class="slide-sigin">
+                        <h1>Bienvenido, usuario!</h1>
+                        <p class="toggle-p">Introduce tus datos para acceder al sistema de gestión escolar.</p>
+                        <p class="toggle-p p-und">¿No tienes una cuenta?</p>
+                        <button class="hidden btn-register-toggle" id="btn-register-slidemenu">Registrarse</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="toggle-container">
             <div class="toggle">
-                <div class="toggle-panel logo">
+                <div class="toggle-panel  logo">
                     <i class="fa-solid fa-school"></i>
                     <span class="logo-txt">INSTITUTO PRIVADO DEAN FUNES</span>
                 </div>
@@ -372,8 +381,10 @@
                                 <input type="hidden" name="cropped_image_data" id="cropped_image_data">
                                 <br>
                                 <input type="file" name="browse_image" id="browse_image" class="form-control" style="display: none;"> 
-                                <button id="browse_button" type="button" class="btn btn-acceptimage">Seleccionar Imagen</button>
-                                <button type="button" class="btn btn-crop" id="crop_button" >Recortar</button>
+                                <div class="btn-images">
+                                    <button id="browse_button" type="button" class="btn btn-acceptimage">Seleccionar Imagen</button>
+                                    <button type="button" class="btn btn-crop" id="crop_button" >Recortar</button>
+                                </div>
                             </div>
                             <div class="cointainer-settings-image">
                                 <!-- <label>Imagen de la cuenta</label> -->

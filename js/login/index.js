@@ -1707,7 +1707,8 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
             containerSlideMenu.classList.remove('hiddenElement');
         } else {
             btnSlideMenu.classList.remove("is-active");
-            toggleSlideMenu.style.backgroundColor = 'transparent';
+            containerSlideMenu.classList.add('hiddenElement');
+            toggleSlideMenu.style.background = 'none';
             toggleSlideMenu.style.backdropFilter = 'none';
         }
     });
