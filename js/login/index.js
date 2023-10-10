@@ -9,10 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('container');
     const registerBtn = document.getElementById('btn-register');
     const loginBtn = document.getElementById('btn-login');
+    const registerBtnSlidemenu = document.getElementById("btn-register-slidemenu");
     const signup = document.querySelector('.sign-up');
     const signin = document.querySelector('.sign-in');
 
     registerBtn.addEventListener('click', () => {
+        container.classList.add("active");
+        signin.classList.add("hiddenElement");
+        signup.classList.remove("hiddenElement");
+    });
+
+    registerBtnSlidemenu.addEventListener('click', () => {
         container.classList.add("active");
         signin.classList.add("hiddenElement");
         signup.classList.remove("hiddenElement");

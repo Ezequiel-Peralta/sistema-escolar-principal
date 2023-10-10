@@ -395,7 +395,7 @@ body {
     margin-top: 10px;
     cursor: pointer;
     background-size: 210%;
-    background-image: linear-gradient(to left, #ae0e30, #af6a78, #ae0e30);
+    background-image: linear-gradient(to left, #ae0e30, #fa9f9f, #ae0e30);
     transition: 0.6s;
 }
 
