@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         signin.classList.add("hiddenElement");
         signup.classList.remove("hiddenElement");
 
-        containerSlidemenu.add("hiddenElement");
+        containerSlidemenu.classList.add("hiddenElement");
     });
     
     loginBtn.addEventListener('click', () => {
