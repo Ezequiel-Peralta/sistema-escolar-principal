@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const signup = document.querySelector('.sign-up');
     const signin = document.querySelector('.sign-in');
 
+    var containerSlidemenu = document.getElementsByClassName("container-slidemenu");
+
     registerBtn.addEventListener('click', () => {
         container.classList.add("active");
         signin.classList.add("hiddenElement");
@@ -23,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         container.classList.add("active");
         signin.classList.add("hiddenElement");
         signup.classList.remove("hiddenElement");
+
+        containerSlidemenu.add("hiddenElement");
     });
     
     loginBtn.addEventListener('click', () => {
