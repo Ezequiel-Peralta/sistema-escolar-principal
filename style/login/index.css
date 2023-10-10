@@ -2128,18 +2128,10 @@ img {
     }
 
     .slide-sigin {
-        /* position: absolute; */
         width: 350px;
         height: 70%;
-        /* display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center; */
         top: 15%;
         right: 68.6%;
-        /* transition: all 0.6s ease-in-out;
-        z-index: 2; */
     }
 }
 
@@ -2194,7 +2186,7 @@ img {
         width: 350px;
         height: 70%;
         top: 15%;
-        right: 67.7%;
+        right: 69%;
     }
 
 }
