@@ -2204,8 +2204,10 @@ img {
         width: 45vh;
         height: 50vh;
         /* background-color: #27ae60; */
-    } .scrollable-title-container {
-        
+    }
+    
+    .cointaner-stage-mobile .big-heading{
+        margin: -4px 0 0 160px;
     }
     
     .signup-form-content {
