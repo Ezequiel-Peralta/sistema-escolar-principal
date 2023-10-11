@@ -2203,7 +2203,9 @@ img {
         padding: 0 0 0 1px;
         width: 45vh;
         height: 50vh;
-        background-color: #27ae60;
+        /* background-color: #27ae60; */
+    } .scrollable-title-container {
+        
     }
     
     .signup-form-content {
@@ -2218,7 +2220,7 @@ img {
         margin: 20px 125px 0 0;
         padding: 0 0 0 1px;
         width: 45vh;
-        background-color: #e2df17;
+        /* background-color: #e2df17; */
     }
 
     .pagination-btns-mobile .nextPage {
