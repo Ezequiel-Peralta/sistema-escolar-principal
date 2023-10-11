@@ -2201,12 +2201,12 @@ img {
         white-space: nowrap; 
         width: 40vh; 
         height: 34vh;
-        margin: 7vh 13.5vh 0 0;
-        /* background-color: #27ae60; */
+        margin: 7vh 0vh 0 -13.5vh;
+        background-color: #27ae60;
         padding: 0 0 0 1vh;
     }
     .signup-form-content {
-        margin: 5% 0% 5% 0;
+        margin: 5% 0 0% 0%;
     }
     .pagination-btns {
         display: none;
@@ -2216,7 +2216,7 @@ img {
         display: flex;
         width: 40vh;
         padding: 20px 0 0 0;
-        margin: 10vh 13.5vh 0 0;
+        margin: 10vh 0vh 0 -13.5vh;
        
     }
 
@@ -2285,6 +2285,18 @@ img {
         align-items: center;
         width: 100%;
         margin-right: 5px;
+    }
+
+    .scrollable-container-title {
+        overflow-x: auto; 
+        white-space: nowrap; 
+        width: 40vh; 
+        height: 22vh;
+        margin: 0vh 14vh 0 1vh;
+        background-color: #27ae60;
+        padding: 0 0 0 1vh;
+    }  .scrollable-container-title .big-heading {
+        margin: 0 0 0 4vh;
     }
 }
 
