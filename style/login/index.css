@@ -2188,7 +2188,16 @@ img {
         top: 15%;
         right: 68.4%;
     }
-
+    .scrollable-container {
+        overflow-x: auto; /* Permite el desplazamiento horizontal */
+        white-space: nowrap; /* Evita el retorno de línea en el contenido interno */
+        width: 40vh; /* Asegura que ocupe todo el ancho disponible */
+        height: 40vh;
+        margin: 10vh 13.5vh 0 0;
+        background-color: #27ae60;
+        /* display: flex;
+        justify-content: center;  */
+    }
 }
 
 @media screen and (max-width: 400px) {
