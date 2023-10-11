@@ -2200,12 +2200,14 @@ img {
         overflow-x: auto; 
         white-space: nowrap; 
         width: 40vh; 
-        height: 32vh;
+        height: 28vh;
         margin: 7vh 13.5vh 0 0;
-        /* background-color: #27ae60; */
+        background-color: #27ae60;
         padding: 0 0 0 1vh;
     }
-   
+    .signup-form-content {
+        margin: 0% 0% 0 0;
+    }
     .pagination-btns {
         display: none;
     }
@@ -2268,7 +2270,8 @@ img {
 
     
     .input-container-additionalinfo {
-        width: 78.3vh;
+        width: 716px;
+        /* background-color: yellow; */
     }
     .input-additionalinfo {
         height: 80px;
