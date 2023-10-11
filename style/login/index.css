@@ -2206,8 +2206,21 @@ img {
         /* background-color: #27ae60; */
     }
     
+    .cointaner-stage-mobile {
+        /* background-color: #27ae60; */
+    } .cointaner-stage-mobile .progress-bar { 
+        display: flex;
+        margin-left: -1%;
+        margin: 20px 125px 0 0;
+        width: 45vh;
+        height: 10vh;
+        border-radius: 10px;
+        padding: 0px 20px 0 0;
+        position: relative;
+    }
+ 
     .cointaner-stage-mobile .big-heading{
-        margin: -4px 0 0 160px;
+        margin: -3px 0 0 80px;
     }
     
     .signup-form-content {
@@ -2292,16 +2305,73 @@ img {
         margin-right: 5px;
     }
 
-    .scrollable-container-title {
-        overflow-x: auto; 
-        white-space: nowrap; 
-        width: 40vh; 
-        height: 22vh;
-        margin: 0vh 14vh 0 1vh;
-        background-color: #27ae60;
-        padding: 0 0 0 1vh;
-    }  .scrollable-container-title .big-heading {
-        margin: 0 0 0 4vh;
+
+    .stageno-0 {
+        background-color: transparent;
+    }
+
+    .stage .current-item {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        vertical-align: middle;
+        padding-right: 3px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    
+    .stageno .stageno-0 {
+        margin: 6% 0%;
+        padding: 2% 7%;
+        border-radius: 50%;
+        background-color: #ffffff;
+        width: 32px;
+        height: 30px;
+        text-align: center;
+        line-height: 25px;
+        color: #6e6e6e;
+        font-weight: bolder;
+    }
+    .current-item .stageno {
+        margin: 6% 0%;
+        padding: 10% 7%;
+        border-radius: 50%;
+        background-color: #e2e2e7;
+        width: 52px;
+        height: 50px;
+        text-align: center;
+        line-height: 25px;
+        color: #ae0e30;
+        font-weight: bolder;
+    }
+
+    .progress-bar .stage {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        vertical-align: middle;
+        padding-right: 3px;
+        padding-left: 20px;
+        position: relative;
+    } .progress-bar .stage:nth-child(4),.stage:nth-child(5),.stage:nth-child(6),.stage:nth-child(7)  {
+        display: none;
+    }
+    
+    .stage.stageno-0+.stage:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 58px;
+        background: #fff;
+        width: 100%;
+        height: 4px;
+        transform: translateX(-50%);
+        z-index: -10;
     }
 }
 
