@@ -9,24 +9,50 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('container');
     const registerBtn = document.getElementById('btn-register');
     const loginBtn = document.getElementById('btn-login');
-    const registerBtnSlidemenu = document.getElementById("btn-register-slidemenu");
     const signup = document.querySelector('.sign-up');
     const signin = document.querySelector('.sign-in');
 
-    var containerSlidemenu = document.getElementsByClassName("container-slidemenu");
+    const registerBtnSlidemenu = document.getElementById("btn-register-slidemenu");
+    const loginBtnSlidemenu = document.getElementById("btn-login-slidemenu")
+    const toggleSlideMenu = document.querySelector(".toggle-slidemenu");
+    const btnSlideMenu = document.querySelector('.btn-open-slidemenu');
+    const containerSlideMenu = document.querySelector('.container-slidemenu');
+    const slideSigin = document.querySelector('.slide-sigin');
+    const slideSigup = document.querySelector('.slide-sigup');
+
+    slideSigup.style.display = "none";
 
     registerBtn.addEventListener('click', () => {
         container.classList.add("active");
         signin.classList.add("hiddenElement");
         signup.classList.remove("hiddenElement");
     });
+    
 
     registerBtnSlidemenu.addEventListener('click', () => {
         container.classList.add("active");
+        containerSlideMenu.classList.add("hiddenElement");
         signin.classList.add("hiddenElement");
         signup.classList.remove("hiddenElement");
 
-        containerSlidemenu.classList.add("hiddenElement");
+        toggleSlideMenu.style.backgroundColor = "transparent";
+        btnSlideMenu.classList.remove("is-active");
+
+        slideSigin.style.display = "none";
+        slideSigup.style.display = "flex";
+    });
+
+    loginBtnSlidemenu.addEventListener('click', () => {
+        container.classList.remove("active");
+        containerSlideMenu.classList.add("hiddenElement");
+        signin.classList.remove("hiddenElement");
+        signup.classList.add("hiddenElement");
+
+        toggleSlideMenu.style.backgroundColor = "transparent";
+        btnSlideMenu.classList.remove("is-active");
+
+        slideSigin.style.display = "flex";
+        slideSigup.style.display = "none";
     });
     
     loginBtn.addEventListener('click', () => {
@@ -1705,9 +1731,8 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         //     alert("Posición: " + e.latlng);
         // }
     }
-    const btnSlideMenu = document.querySelector('.btn-open-slidemenu');
-    const containerSlideMenu = document.querySelector('.container-slidemenu');
-    const toggleSlideMenu = document.querySelector(".toggle-slidemenu");
+   
+    
     
     btnSlideMenu.addEventListener('click', () => {
         if (!btnSlideMenu.classList.contains("is-active")) {

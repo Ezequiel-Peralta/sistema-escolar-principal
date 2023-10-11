@@ -1989,7 +1989,7 @@ img {
     left: 75px;
 } 
 
-.slide-sigin {
+.slide-sigin, .slide-sigup {
     position: absolute;
     width: 350px;
     height: 70%;
@@ -2127,7 +2127,7 @@ img {
         transition: all 200ms ease-in;
     }
 
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
@@ -2149,7 +2149,7 @@ img {
         left: 130px;
     }
 
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
@@ -2166,7 +2166,7 @@ img {
     }
 
     
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
@@ -2182,7 +2182,7 @@ img {
         left: 82px;
     }
 
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
@@ -2199,7 +2199,7 @@ img {
         left: 65px;
     }
 
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
@@ -2216,7 +2216,7 @@ img {
         left: 65px;
     }
 
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
@@ -2232,7 +2232,7 @@ img {
         left: 65px;
     }
 
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
@@ -2260,10 +2260,11 @@ img {
         font-size:12px;
     }
 
-    .slide-sigin {
+    .slide-sigin, .slide-sigup {
         width: 350px;
         height: 70%;
         top: 15%;
         right: 70.4%;
+        
     } 
 }
