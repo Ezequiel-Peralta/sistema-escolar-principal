@@ -2201,7 +2201,7 @@ img {
         white-space: nowrap;
         margin: 20px 125px 0 0;
         padding: 0 0 0 1px;
-        width: 40vh;
+        width: 42vh;
         height: 50vh;
         background-color: #27ae60;
     }
@@ -2215,10 +2215,10 @@ img {
 
     .pagination-btns-mobile {
         display: flex;
-        width: 40vh;
-        padding: 20px 0 0 0;
-        margin: 0 0vh 0 -13.5vh;
-       
+        margin: 20px 125px 0 0;
+        padding: 0 0 0 1px;
+        width: 42vh;
+        background-color: #e2df17;
     }
 
     .pagination-btns-mobile .nextPage {
