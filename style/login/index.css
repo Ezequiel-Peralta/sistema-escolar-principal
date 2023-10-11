@@ -2363,9 +2363,8 @@ img {
 
     .info-register-mobile {
         position: absolute;
-        width: 350px;
         background: #fff;
-        padding: 3px 8px 3px 8px;
+        padding: 10px 3px 0px 20px;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         text-align: center;
@@ -2374,11 +2373,15 @@ img {
         box-shadow: 0px 20px 30px -8px rgba(0, 0, 0, 2);
         font-size: 13px;
         font-weight: 500;
-        left: 205px;
-        /* Centrar horizontalmente */
-        top: 136px;
-        /* Controlar la posición vertical */
+        /* left: 205px;
+        top: 136px; */
         transform: translateX(-50%);
+        display: flex;
+        margin-left: -1%;
+        margin: 180px 0px 0 360px;
+        width: 38vh;
+        height: 5vh;
+        border-radius: 10px;
     }
  
     .info-register-mobile .required-info {
