@@ -634,6 +634,12 @@ body {
     width: 130%;
 }
 
+.input-container-additionalinfo {
+    display: flex;
+    align-items: center;
+    width: 130%;
+}
+
 .input-container input {
     width: 335px;
     margin-right: 50px;
@@ -715,7 +721,7 @@ select:focus {
 }
 
 
-.input-container .input-additionalinfo {
+.input-container-additionalinfo .input-additionalinfo {
     width: 720px;
     height: 80px;
     text-align: left;
@@ -731,7 +737,7 @@ select:focus {
     resize: none;
 }
 
-.input-container .input-additionalinfo:focus {
+.input-container-additionalinfo .input-additionalinfo:focus {
     box-shadow: 0 0 0 1pt #ae0e30 !important;
     transition: all 200ms ease-in;
 }
@@ -2059,7 +2065,9 @@ img {
     }
 } */
 
-
+.pagination-btns-mobile {
+    display: none;
+}
 
 
 
@@ -2189,14 +2197,84 @@ img {
         right: 68.4%;
     }
     .scrollable-container {
-        overflow-x: auto; /* Permite el desplazamiento horizontal */
-        white-space: nowrap; /* Evita el retorno de línea en el contenido interno */
-        width: 40vh; /* Asegura que ocupe todo el ancho disponible */
-        height: 40vh;
+        overflow-x: auto; 
+        white-space: nowrap; 
+        width: 40vh; 
+        height: 32vh;
+        margin: 7vh 13.5vh 0 0;
+        /* background-color: #27ae60; */
+        padding: 0 0 0 1vh;
+    }
+   
+    .pagination-btns {
+        display: none;
+    }
+
+    .pagination-btns-mobile {
+        display: flex;
+        width: 40vh;
+        padding: 20px 0 0 0;
         margin: 10vh 13.5vh 0 0;
-        background-color: #27ae60;
-        /* display: flex;
-        justify-content: center;  */
+       
+    }
+
+    .pagination-btns-mobile .nextPage {
+        width: 200px;
+        color: #fff;
+        font-size: 14px;
+        padding: 2vh 2vh;
+        margin-left: 3vh;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 10px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        background-color: #ae0e30;
+        transition: 0.6s ease-in-out;
+        text-align: center;
+        align-items: center;
+    }
+    
+    /* .nextPage:hover {
+        background: -webkit-linear-gradient(0deg, transparent 50%, #fff 50%);
+        background-size: 400px 80px;
+        background-position: 200px 0;
+        color: #ae0e30;
+        border: 1px solid #ae0e30;
+    
+    } */
+    
+    .pagination-btns-mobile .previousPage {
+        width: 200px;
+        color: #fff;
+        font-size: 14px;
+        padding: 2vh 2vh;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 10px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        background-color: #ae0e30;
+        transition: 0.6s ease-in-out;
+        text-align: center;
+        align-items: center;
+    }
+
+    
+    .input-container-additionalinfo {
+        width: 78.3vh;
+    }
+    .input-additionalinfo {
+        height: 80px;
+        margin: 8px 0;
+        padding: 15px 10px 12px 15px;
+        
     }
 }
 
