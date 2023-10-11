@@ -2197,14 +2197,18 @@ img {
         right: 68.4%;
     }
     .scrollable-container {
-        overflow-x: auto; 
-        white-space: nowrap; 
-        width: 40vh; 
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 40vh;
         height: 34vh;
-        margin: 7vh 0vh 0 -13.5vh;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-67%, -50%);
         background-color: #27ae60;
-        padding: 0 0 0 1vh;
+        padding: 0 1vh; /* Añade el relleno necesario */
     }
+    
     .signup-form-content {
         margin: 5% 0 0% 0%;
     }
