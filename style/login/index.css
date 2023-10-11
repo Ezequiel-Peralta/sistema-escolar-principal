@@ -753,7 +753,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .wrap-datetime {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 64%;
 }
 
 .wrap-gender-selection {
@@ -2202,7 +2202,7 @@ img {
         width: 40vh; 
         height: 34vh;
         margin: 7vh 13.5vh 0 0;
-        background-color: #27ae60;
+        /* background-color: #27ae60; */
         padding: 0 0 0 1vh;
     }
     .signup-form-content {
@@ -2278,6 +2278,13 @@ img {
         margin: 8px 0;
         padding: 15px 10px 12px 15px;
         
+    }
+
+    .wrap-datetime {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-right: 5px;
     }
 }
 
