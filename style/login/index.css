@@ -2199,14 +2199,11 @@ img {
     .scrollable-container {
         overflow-x: auto;
         white-space: nowrap;
-        width: 42vh;
-        height: 34vh;
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translate(-67%, -50%);
+        margin: 20px 125px 0 0;
+        padding: 0 0 0 1px;
+        width: 40vh;
+        height: 50vh;
         background-color: #27ae60;
-        padding: 0 1vh; /* Añade el relleno necesario */
     }
     
     .signup-form-content {
@@ -2220,7 +2217,7 @@ img {
         display: flex;
         width: 40vh;
         padding: 20px 0 0 0;
-        margin: 10vh 0vh 0 -13.5vh;
+        margin: 0 0vh 0 -13.5vh;
        
     }
 
