@@ -2200,13 +2200,13 @@ img {
         overflow-x: auto; 
         white-space: nowrap; 
         width: 40vh; 
-        height: 28vh;
+        height: 34vh;
         margin: 7vh 13.5vh 0 0;
         background-color: #27ae60;
         padding: 0 0 0 1vh;
     }
     .signup-form-content {
-        margin: 0% 0% 0 0;
+        margin: 5% 0% 5% 0;
     }
     .pagination-btns {
         display: none;
