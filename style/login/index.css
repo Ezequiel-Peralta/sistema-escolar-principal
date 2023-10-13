@@ -470,13 +470,14 @@ body {
 }
 
 .hiddenElement {
-    display: none;
+    display: none !important;
 }
 
 .big-heading {
     font-weight: 900;
     font-size: 2em;
     color: #000000;
+    margin: 0 0 0 195px;
 }
 
 .progress-bar {
@@ -484,13 +485,13 @@ body {
     justify-content: center;
     align-items: center;
     margin: 4% 0%;
-    margin-left: -1%;
-    width: 120%;
+    margin-left: -2.5%;
+    width: 105%;
     text-align: center;
 
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
-    padding: 10px 0px;
+    padding: 15px 0px 15px 0;
     position: relative;
 }
 
@@ -600,9 +601,9 @@ body {
     box-shadow: 0px 20px 30px -8px rgba(0, 0, 0, 2);
     font-size: 13px;
     font-weight: 500;
-    left: 47%;
+    left: 49%;
     /* Centrar horizontalmente */
-    top: 162px;
+    top: 176px;
     /* Controlar la posición vertical */
     transform: translateX(-50%);
 }
@@ -625,7 +626,7 @@ body {
 
 .signup-form-content {
     width: 100%;
-    margin: 9% 21% 0 0;
+    margin: 9% 21% 0 2.8%;
 }
 
 .input-container {
@@ -766,7 +767,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     align-items: center;
     width: 100%;
-    margin-left: 26%;
+    margin-left: 20%;
 }
 
 .input-container .wrap-relationship-selection .select-relationship {
@@ -806,7 +807,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
-    margin-right: 50px;
+    margin-right: 0px;
     border: 1px solid transparent;
     border-radius: 8px;
     font-weight: 600;
@@ -835,7 +836,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
-    margin-right: 50px;
+    margin-right: 20px;
+    margin-left: -18px;
     border: 1px solid transparent;
     border-radius: 8px;
     font-weight: 600;
@@ -878,12 +880,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 .stage-btns-1 {
-    margin-top: 1.95%;
+    margin-top: 1.7%;
     margin-left: 20%;
 }
 
 .stage-btns-2 {
-    margin-top: 1.65%;
+    margin-top: 1.45%;
     margin-left: 20%;
 }
 
@@ -893,18 +895,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .stage-btns-4 {
-    margin-top: 17.5%;
+    margin-top: 13.8%;
     margin-left: 20%;
 }
 
 .stage-btns-5 {
-    margin-top: 23.3%;
-    margin-left: 20%;
+    margin-top: 18.6%;
+    margin-left: 19.6%;
 }
 
 .stage-btns-6 {
-    margin-top: 22.3%;
-    margin-left: 20%;
+    margin-top: 40.5%;
+    margin-left: 1.5%;
 }
 
 .input-container #confirmemail {
@@ -952,7 +954,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .input-container label.tc {
     margin-top: 13%;
-    margin-left: 13.7%;
+    margin-left: -6.2%;
     width: 100%;
 }
 
@@ -1403,7 +1405,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .localidad-checkout-correct {
     position: absolute;
-    top: 45.9%;
+    top: 48.7%;
     transform: translateY(-90%);
     right: -10.2%;
     color: #52ec61;
@@ -1719,6 +1721,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 8px;
     margin-top: -10px;
     padding: 0 0 0 80px;
+    margin-right: 42px;
 } .btn-images {
     margin: 0 0 0 0;
 }
@@ -2065,9 +2068,9 @@ img {
     }
 } */
 
-.pagination-btns-mobile {
+/* .pagination-btns-mobile {
     display: none;
-}
+} */
 
 
 
@@ -2220,7 +2223,7 @@ img {
     }
  
     .cointaner-stage-mobile .big-heading{
-        margin: -3px 0 0 50px;
+        margin: -3px 0 0 60px;
     }
     
     .signup-form-content {
@@ -2243,7 +2246,7 @@ img {
         font-weight: bolder;
     }
     
-    .pagination-btns-mobile {
+    .btns-mobile {
         display: flex;
         margin: 20px 125px 0 0;
         padding: 0 0 0 1px;
@@ -2251,7 +2254,7 @@ img {
         /* background-color: #e2df17; */
     }
 
-    .pagination-btns-mobile .nextPage {
+    .btns-mobile .nextPage {
         width: 200px;
         color: #fff;
         font-size: 14px;
@@ -2280,7 +2283,7 @@ img {
     
     } */
     
-    .pagination-btns-mobile .previousPage {
+    .btns-mobile .previousPage {
         width: 200px;
         color: #fff;
         font-size: 14px;
@@ -2336,19 +2339,8 @@ img {
     }
 
     
-    .stageno .stageno-0 {
-        margin: 6% 0%;
-        padding: 2% 7%;
-        border-radius: 50%;
-        background-color: #ffffff;
-        width: 32px;
-        height: 30px;
-        text-align: center;
-        line-height: 25px;
-        color: #6e6e6e;
-        font-weight: bolder;
-    }
-    .current-item .stageno {
+   
+    .current-item-mobile .stageno {
         margin: 6% 0%;
         padding: 13% 7%;
         border-radius: 50%;
@@ -2357,6 +2349,10 @@ img {
         height: 50px;
         text-align: center;
         line-height: 25px;
+        color: #ae0e30;
+        font-weight: bolder;
+    }
+    .current-item-mobile #tool-tip-1-mobile {
         color: #ae0e30;
         font-weight: bolder;
     }
@@ -2369,11 +2365,18 @@ img {
         height: 4vh;
         border-radius: 0 0 10px 10px;
         background-color: #fff;
-        padding: 0px 0 0 22px;
+        padding: 10px 0 0 30px;
+        /* padding: 3px 8px 3px 8px; */
         position: absolute;
         font-size: 13px;
         font-weight: bolder;
-        box-shadow: 0px 20px 30px -8px rgba(0, 0, 0, 2);
+        box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 2);
+        text-align: center;
+        font-weight: bold;
+        color: #6e6e6e;
+        /* box-shadow: 0px 20px 30px -8px rgba(0, 0, 0, 2); */
+        font-size: 13px;
+        font-weight: 500;
     }
  
     .info-register-mobile .required-info {
@@ -2388,30 +2391,38 @@ img {
         display: none;
     }
 
-    .progress-bar .stage {
-        width: 30%;
+    .cointaner-stage-mobile .progress-bar .stage {
+        width: 40%;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         vertical-align: middle;
-        padding-right: 3px;
-        padding-left: 20px;
+        padding-left: 10px;
         position: relative;
-    } .progress-bar .stage:nth-child(4),.stage:nth-child(5),.stage:nth-child(6),.stage:nth-child(7)  {
+    } .cointaner-stage-mobile .progress-bar .stage:nth-child(4), .cointaner-stage-mobile .progress-bar .stage:nth-child(5), .cointaner-stage-mobile .progress-bar .stage:nth-child(6), .cointaner-stage-mobile .progress-bar .stage:nth-child(7)  {
         display: none;
     }
     
-    .stage.stageno-0+.stage:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 58px;
-        background: #fff;
-        width: 100%;
-        height: 4px;
-        transform: translateX(-50%);
-        z-index: -10;
+    .stage.stage-0+.stage:before {
+        top: 68px;
+        background-color: #fff;
+    }
+    /* .bgcolor.stage.stage-0+.stage:before {
+        top: 68px;
+        background-color: #e2e2e7 !important;
+    } */
+    .stage+.current-item-mobile.grey-background:before {
+        background-color: #e2e2e7 !important;
+        /* transition: background-color 0.1s ease-in-out; */
+    }
+    .stage+.current-item-mobile.white-background:before {
+        background-color: #fff !important;
+        /* transition: background-color 0.1s ease-in-out; */
+    }
+    .stage+.current-item-mobile.green-background:before {
+        background: #52ec61 !important;
+        /* transition: background-color 0.1s ease-in-out; */
     }
 }
 

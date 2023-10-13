@@ -4,7 +4,8 @@ $(document).ready(function() {
 });
 // document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener("DOMContentLoaded", function () {
-    const URL_CP = "http://localhost:58805/api/CP/";
+    // const URL_CP = "http://localhost:58805/api/CP/";
+    const URL_CP = "http://localhost:53133/api/CpCordoba/";
 
     const container = document.getElementById('container');
     const registerBtn = document.getElementById('btn-register');
@@ -1299,19 +1300,24 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     function checkState1() {
         if (stateName === true && stateLastname === true && stateDni === true && statePhone === true && stateDatetime === true && stateGender === true) {
             stagebtn1b.classList.remove("btnDisabled");
+            nextBtnStage1.classList.remove("btnDisabled");
             return true;
         } else {
             stagebtn1b.classList.add("btnDisabled");
+            nextBtnStage1.classList.add("btnDisabled");
             return false;
         }
     }
 
+    // && stateLocalidad === true
     function checkState2() {
-        if (statePostalcode === true && stateLocalidad === true && stateStreet === true && stateStreetnumber === true) {
+        if (statePostalcode === true && stateStreet === true && stateStreetnumber === true) {
             stagebtn2b.classList.remove("btnDisabled");
+            nextBtnStage2.classList.remove("btnDisabled");
             return true;
         } else {
             stagebtn2b.classList.add("btnDisabled");
+            nextBtnStage2.classList.add("btnDisabled");
             return false;
         }
     }
@@ -1319,9 +1325,11 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     function checkState4() {
         if (stateEmail === true && stateConfirmemail === true && stateMatricula === true && stateTypeuser === true && statePassword === true && stateConfirmpassword === true) {
             stagebtn4b.classList.remove("btnDisabled");
+            nextBtnStage4.classList.remove("btnDisabled");
             return true;
         } else {
             stagebtn4b.classList.add("btnDisabled");
+            nextBtnStage4.classList.add("btnDisabled");
             return false;
         }
     }
@@ -1340,9 +1348,11 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     function checkState6() {
         if (stateCheckboxTc === true) {
             stagebtn6b.classList.remove("btnDisabled");
+            nextBtnStage6.classList.remove("btnDisabled");
             return true;
         } else {
             stagebtn6b.classList.add("btnDisabled");
+            nextBtnStage6.classList.remove("btnDisabled");
             return false;
         }
     }
@@ -1751,4 +1761,265 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     
     
     // btnSlideMenu.classList.toggle("is-active");
+    const paginationBtnsMobile = document.querySelector(".pagination-btns-mobile");
+    const cointanerStageMobile = document.querySelector(".cointaner-stage-mobile");
+    
+    const stageBtns1 = paginationBtnsMobile.querySelector(".stage-btns-1");
+    const prevBtnStage1 = paginationBtnsMobile.querySelector(".stagebtn1a");
+    const nextBtnStage1 = paginationBtnsMobile.querySelector(".stagebtn1b");
+
+    const stageBtns2 = paginationBtnsMobile.querySelector(".stage-btns-2");
+    const prevBtnStage2 = paginationBtnsMobile.querySelector(".stagebtn2a");
+    const nextBtnStage2 = paginationBtnsMobile.querySelector(".stagebtn2b");
+
+    const stageBtns3 = paginationBtnsMobile.querySelector(".stage-btns-3");
+    const prevBtnStage3 = paginationBtnsMobile.querySelector(".stagebtn3a");
+    const nextBtnStage3 = paginationBtnsMobile.querySelector(".stagebtn3b");
+
+    const stageBtns4 = paginationBtnsMobile.querySelector(".stage-btns-4");
+    const prevBtnStage4 = paginationBtnsMobile.querySelector(".stagebtn4a");
+    const nextBtnStage4 = paginationBtnsMobile.querySelector(".stagebtn4b");
+
+    const stageBtns5 = paginationBtnsMobile.querySelector(".stage-btns-5");
+    const prevBtnStage5 = paginationBtnsMobile.querySelector(".stagebtn5a");
+    const nextBtnStage5 = paginationBtnsMobile.querySelector(".stagebtn5b");
+
+    const stageBtns6 = paginationBtnsMobile.querySelector(".stage-btns-6");
+    const prevBtnStage6 = paginationBtnsMobile.querySelector(".stagebtn6a");
+    const nextBtnStage6 = paginationBtnsMobile.querySelector(".stagebtn6b");
+
+    const toolTip0 = document.getElementById("tool-tip-0");
+    const toolTip1 = document.querySelector("#tool-tip-1-mobile");
+    const toolTip2 = document.querySelector("#tool-tip-2-mobile");
+    const toolTip3 = document.querySelector("#tool-tip-3-mobile");
+    const toolTip4 = document.querySelector("#tool-tip-4-mobile");
+    const toolTip5 = document.querySelector("#tool-tip-5-mobile");
+    const toolTip6 = document.querySelector("#tool-tip-6-mobile");
+    
+    const stageno0 = document.querySelector(".stageno-0");
+    const stageno1 = cointanerStageMobile.querySelector('.stageno-1');
+    const stageno2 = cointanerStageMobile.querySelector('.stageno-2');
+    const stageno3 = cointanerStageMobile.querySelector('.stageno-1');
+    const stageno4 = cointanerStageMobile.querySelector('.stageno-2');
+    const stageno5 = cointanerStageMobile.querySelector('.stageno-1');
+    const stageno6 = cointanerStageMobile.querySelector('.stageno-2');
+
+    const stage0Elements = document.querySelectorAll('.stage-0');
+    const scrollContainer = document.querySelector('.scrollable-container');
+
+    console.log("antes del if", checkState1());
+
+    nextBtnStage1.addEventListener('click', () => {
+        if (checkState1() === true) {
+            
+            console.log(checkState1());
+
+            signupContent1.classList.add("hiddenElement");
+            signupContent3.classList.add("hiddenElement");
+            signupContent2.classList.remove("hiddenElement");
+            // signupContent4.classList.add("hiddenElement");
+
+            stageBtns1.classList.add("hiddenElement");
+            stageBtns2.classList.remove("hiddenElement");
+
+            scrollContainer.scrollLeft = 0;
+
+            setTimeout(() => {
+                
+                toolTip0.style.color = "#ae0e30";
+                toolTip0.textContent = "Información personal";
+              
+                // stageno0.textContent = "1";
+                stageno0.innerText = "✔";
+                stageno0.style.color = "#fff !important";
+
+                toolTip1.textContent = "Información dirección";
+                stageno1.textContent = "2";
+
+                toolTip2.textContent = "Contacto emergencia";
+                stageno2.textContent = "3";
+
+               
+            }, 100);
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno0.style.backgroundColor = "#52ec61";
+        } else {
+            nextBtnStage1.classList.add("btnDisabled");
+        }
+    });
+
+    prevBtnStage2.addEventListener('click', () => {
+        signupContent1.classList.remove("hiddenElement");
+        signupContent3.classList.add("hiddenElement");
+        signupContent2.classList.add("hiddenElement");
+        // signupContent4.classList.add("hiddenElement");
+
+        stageBtns1.classList.remove("hiddenElement");
+        stageBtns2.classList.add("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        // stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+        document.querySelector(".current-item-mobile").classList.remove("grey-background");
+        document.querySelector(".current-item-mobile").classList.remove("green-background");
+        document.querySelector(".current-item-mobile").classList.add("white-background");
+        stageno0.style.backgroundColor = "#fff";
+        toolTip0.style.color = "#ae0e30";
+        toolTip0.textContent = "";
+              
+        // stageno0.textContent = "1";
+        stageno0.innerText = "";
+        stageno0.style.color = "#fff";
+
+        toolTip1.textContent = "Información personal";
+        stageno1.textContent = "1";
+
+        toolTip2.textContent = "Información dirección";
+        stageno2.textContent = "2";
+    });
+
+    nextBtnStage2.addEventListener('click', () => {
+        if (checkState2() === true) {
+            signupContent1.classList.add("hiddenElement");
+            signupContent3.classList.remove("hiddenElement");
+            signupContent2.classList.add("hiddenElement");
+            signupContent4.classList.add("hiddenElement");
+
+            stageBtns1.classList.add("hiddenElement");
+            stageBtns2.classList.add("hiddenElement");
+            stageBtns3.classList.remove("hiddenElement");
+
+            scrollContainer.scrollLeft = 0;
+
+            // stageBtns4.classList.add("hiddenElement");
+            // stageBtns5.classList.add("hiddenElement");
+            // stageBtns6.classList.add("hiddenElement");
+
+            setTimeout(() => {
+                
+                toolTip0.style.color = "#ae0e30";
+                toolTip0.textContent = "Información dirección";
+              
+                // stageno0.textContent = "1";
+                stageno0.innerText = "✔";
+                stageno0.style.color = "white !important";
+
+                toolTip1.textContent = "Contacto emergencia";
+                stageno1.textContent = "3";
+
+                toolTip2.textContent = "Información cuenta";
+                stageno2.textContent = "4";
+
+               
+            }, 100);
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno0.style.backgroundColor = "#52ec61";
+        } else {
+            nextBtnStage2.classList.add("btnDisabled");
+        }
+    });
+
+    prevBtnStage3.addEventListener('click', () => {
+        signupContent1.classList.add("hiddenElement");
+        signupContent3.classList.add("hiddenElement");
+        signupContent2.classList.remove("hiddenElement");
+        // signupContent4.classList.add("hiddenElement");
+
+        stageBtns1.classList.add("hiddenElement");
+        stageBtns2.classList.remove("hiddenElement");
+        stageBtns3.classList.add("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        setTimeout(() => {
+            // stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            document.querySelector(".current-item-mobile").classList.remove("grey-background");
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            document.querySelector(".current-item-mobile").classList.remove("white-background");
+            stageno0.style.backgroundColor = "#52EC61";
+            toolTip0.style.color = "#ae0e30";
+            toolTip0.textContent = "Información personal";
+                
+            // stageno0.textContent = "1";
+            stageno0.innerText = "✔";
+            stageno0.style.color = "#52EC61 !important";
+
+            toolTip1.textContent = "Información dirección";
+            stageno1.textContent = "2";
+
+            toolTip2.textContent = "Contacto emergencia";
+            stageno2.textContent = "3";
+        }, 100);    
+    });
+
+    nextBtnStage3.addEventListener('click', () => {
+        signupContent1.classList.add("hiddenElement");
+        signupContent3.classList.add("hiddenElement");
+        signupContent2.classList.add("hiddenElement");
+        signupContent4.classList.remove("hiddenElement");
+  
+        stageBtns1.classList.add("hiddenElement");
+        stageBtns2.classList.add("hiddenElement");
+        stageBtns3.classList.add("hiddenElement");
+        stageBtns4.classList.remove("hiddenElement");
+        stageBtns5.classList.add("hiddenElement");
+        stageBtns6.classList.add("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        setTimeout(() => {  
+            toolTip0.style.color = "#ae0e30";
+            toolTip0.textContent = "Contacto emergencia";
+              
+            // stageno0.textContent = "1";
+            stageno0.innerText = "✔";
+            stageno0.style.color = "white !important";
+
+            toolTip1.textContent = "Información cuenta";
+            stageno1.textContent = "4";
+
+            toolTip2.textContent = "Imagen cuenta";
+            stageno2.textContent = "5"; 
+        }, 100);
+        document.querySelector(".current-item-mobile").classList.add("green-background");
+        stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+        stageno0.style.backgroundColor = "#52ec61";
+    });
+
+    prevBtnStage4.addEventListener('click', () => {
+        signupContent1.classList.add("hiddenElement");
+        signupContent3.classList.remove("hiddenElement");
+        signupContent2.classList.add("hiddenElement");
+        signupContent4.classList.add("hiddenElement");
+
+        stageBtns1.classList.add("hiddenElement");
+        stageBtns2.classList.remove("hiddenElement");
+        stageBtns3.classList.add("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        setTimeout(() => {
+            // stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            document.querySelector(".current-item-mobile").classList.remove("grey-background");
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            document.querySelector(".current-item-mobile").classList.remove("white-background");
+            stageno0.style.backgroundColor = "#52EC61";
+            toolTip0.style.color = "#ae0e30";
+            toolTip0.textContent = "Información personal";
+                
+            // stageno0.textContent = "1";
+            stageno0.innerText = "✔";
+            stageno0.style.color = "#52EC61 !important";
+
+            toolTip1.textContent = "Información dirección";
+            stageno1.textContent = "2";
+
+            toolTip2.textContent = "Contacto emergencia";
+            stageno2.textContent = "3";
+        }, 100);    
+    });
+
+
 });
