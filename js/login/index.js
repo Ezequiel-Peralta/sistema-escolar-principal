@@ -5,7 +5,8 @@ $(document).ready(function() {
 // document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener("DOMContentLoaded", function () {
     // const URL_CP = "http://localhost:58805/api/CP/";
-    const URL_CP = "http://localhost:53133/api/CpCordoba/";
+    // const URL_CP = "http://localhost:53133/api/CpCordoba/";
+    const URL_CP = "https://sistema-escolar.mssql.somee.com/api/CpCordoba/";
 
     const container = document.getElementById('container');
     const registerBtn = document.getElementById('btn-register');
@@ -1673,6 +1674,9 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
                         });
                     }
                 }
+            })
+            .catch((error) => {
+                console.error("Error al obtener datos:", error);
             });
     }
 
