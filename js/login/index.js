@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // const URL_CP = "http://localhost:58805/api/CP/";
     // // const URL_CP = "http://localhost:53133/api/CpCordoba/";
     // const URL_CP = "https://DBSISTEMAESCOLAR.mssql.somee.com/api/CpCordoba/";
-    const URL_CP = "http://www.sistemaescolaripdf.somee.com/api/CpCordoba/";
+    const URL_CP = "https://www.sistemaescolaripdf.somee.com/api/CpCordoba/";
 
     const container = document.getElementById('container');
     const registerBtn = document.getElementById('btn-register');
