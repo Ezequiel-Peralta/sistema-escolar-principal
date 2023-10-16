@@ -2318,7 +2318,7 @@ img {
         display: flex;
         align-items: center;
         width: 100%;
-        margin-right: 5px;
+        margin-right: -35px;
     }
 
 
@@ -2338,8 +2338,6 @@ img {
         position: relative;
     }
 
-    
-   
     .current-item-mobile .stageno {
         margin: 6% 0%;
         padding: 13% 7%;
@@ -2423,6 +2421,10 @@ img {
     .stage+.current-item-mobile.green-background:before {
         background: #52ec61 !important;
         /* transition: background-color 0.1s ease-in-out; */
+    }
+
+    .stage1-content .input-field {
+        margin-left: -40px;
     }
 }
 
