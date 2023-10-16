@@ -2319,7 +2319,7 @@ img {
         align-items: center;
         width: 100%;
         /* margin-right: -35px; */
-        margin-right: 22px;
+        margin-right: -20px;
     } .wrap-datetime .input-field input{
         width: 70px !important;
     }
