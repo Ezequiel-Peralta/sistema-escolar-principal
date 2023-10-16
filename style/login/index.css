@@ -2451,6 +2451,47 @@ img {
     .stage1-content .input-field #lname, #phone {
         margin-left: 5px;
     }
+
+    
+    .name-checkout-failed {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 12%;
+        color: #ff0037;
+        font-size: 20px;
+        border: none;
+    }
+
+    .name-checkout-correct {
+        position: absolute;
+        top: 46%;
+        transform: translateY(-90%);
+        right: 8%;
+        color: #52ec61;
+        font-size: 20px;
+        border: none;
+    }
+
+    .lastname-checkout-failed {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 17%;
+        color: #ff0037;
+        font-size: 20px;
+        border: none;
+    }
+
+    .lastname-checkout-correct {
+        position: absolute;
+        top: 46%;
+        transform: translateY(-90%);
+        right: 8%;
+        color: #52ec61;
+        font-size: 20px;
+        border: none;
+    }
 }
 
 @media screen and (max-width: 400px) {
