@@ -626,7 +626,7 @@ body {
 
 .signup-form-content {
     width: 100%;
-    margin: 9% 21% 0 20%;
+    margin: 9% 21% 0 2.8%;
 }
 
 .input-container {
@@ -2227,7 +2227,8 @@ img {
     }
     
     .signup-form-content {
-        margin: 5% 0% 0% 0%;
+        width: 100%;
+        margin: 5% 0% 0% 20%;
     }
     .pagination-btns {
         display: none;
