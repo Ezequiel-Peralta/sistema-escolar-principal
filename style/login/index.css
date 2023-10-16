@@ -2447,7 +2447,7 @@ img {
     }
 
     .stage1-content .input-field input {
-        width: 240px;
+        width: 260px;
         margin-right: 0; /* Elimina el margen derecho */
     }
     .stage1-content .input-field #lname, #phone {
