@@ -2430,11 +2430,11 @@ img {
         /* transition: background-color 0.1s ease-in-out; */
     }
     .stage1-content {
-        padding: 0 0 -40px 0;
+        padding: 0 0 0 0;
     }
     .stage1-content .input-field {
         /* margin-left: -40px; */
-       
+        margin-right: -40px;
     } .stage1-content .input-field input {
         width: 230px;
     }
