@@ -2427,6 +2427,8 @@ img {
     .stage1-content .input-field {
         /* margin-left: -40px; */
         margin-right: -40px;
+    } .stage1-content .input-field input {
+        /* width: 230px; */
     }
 }
 
