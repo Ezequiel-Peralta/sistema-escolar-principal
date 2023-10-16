@@ -2449,7 +2449,7 @@ img {
         margin-right: 0; /* Elimina el margen derecho */
     }
     .stage1-content .input-field #lname, #phone {
-        margin-left: 5px;
+        margin-left: 4px;
     }
 }
 
