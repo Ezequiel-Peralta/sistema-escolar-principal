@@ -2303,11 +2303,6 @@ img {
         align-items: center;
     }
 
-    .input-container {
-        width: 50%;
-        margin: 0 -300px 0 0;
-    }
-
     .input-container-additionalinfo {
         width: 468px;
         /* background-color: yellow; */
@@ -2442,6 +2437,16 @@ img {
         margin-right: -40px;
     } .stage1-content .input-field input {
         width: 230px;
+    }
+
+    .stage1-content {
+        padding: 0;
+        margin: 0;
+    }
+
+    .stage1-content .input-field input {
+        width: 100%; /* O el ancho deseado */
+        margin-right: 0; /* Elimina el margen derecho */
     }
 }
 
