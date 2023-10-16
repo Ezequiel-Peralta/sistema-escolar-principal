@@ -2228,7 +2228,7 @@ img {
     
     .signup-form-content {
         width: 100%;
-        margin: 5% 200vh 50% 0%;
+        margin: 5% 0% 0% 0%;
     }
     .pagination-btns {
         display: none;
@@ -2303,7 +2303,10 @@ img {
         align-items: center;
     }
 
-    
+    .input-container {
+        margin-right: -300px;
+    }
+
     .input-container-additionalinfo {
         width: 468px;
         /* background-color: yellow; */
