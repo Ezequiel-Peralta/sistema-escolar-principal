@@ -2227,8 +2227,8 @@ img {
     }
     
     .signup-form-content {
-        width: 70%;
-        margin: 5% 50% 0% 0%;
+        width: 20%;
+        margin: 5% -200vh 0% 0%;
     }
     .pagination-btns {
         display: none;
