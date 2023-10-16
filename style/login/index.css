@@ -1565,8 +1565,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .tooltip-error {
     visibility: hidden;
-    width: 520px;
-    height: 40px;
+    width: 380px;
+    height: 30px;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -1576,8 +1576,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     z-index: 2000;
     bottom: 100%;
     left: -100px; 
+    bottom: 50%;
     opacity: 0;
     transition: opacity 0.2s;
+    font-size: 13px;
 }
 
 .tooltip-error::after {
