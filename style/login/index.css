@@ -2464,18 +2464,11 @@ img {
     }
 
     .name-checkout-correct {
-        /* position: absolute;
+        position: absolute;
         top: 46%;
         transform: translateY(-90%);
-        right: 8%;
-        color: #52ec61;
-        font-size: 20px;
-        border: none; */
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
         right: 6%;
-        color: #ff0037;
+        color: #52ec61;
         font-size: 20px;
         border: none;
     }
