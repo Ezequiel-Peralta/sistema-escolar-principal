@@ -2318,7 +2318,7 @@ img {
         align-items: center;
         width: 100%;
         /* margin-right: -35px; */
-        margin-right: 0px;
+        margin-right: 10px;
     } .wrap-datetime .lbl-datetime {
         width: 130px !important;
     } .wrap-datetime .input-field input{
