@@ -2477,7 +2477,7 @@ img {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        right: 17%;
+        right: 7%;
         color: #ff0037;
         font-size: 20px;
         border: none;
@@ -2487,7 +2487,88 @@ img {
         position: absolute;
         top: 46%;
         transform: translateY(-90%);
-        right: 8%;
+        right: -6.5%;
+        color: #52ec61;
+        font-size: 20px;
+        border: none;
+    }
+
+    .dni-checkout-failed {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 6%;
+        color: #ff0037;
+        font-size: 20px;
+        border: none;
+    }
+
+    .dni-checkout-correct {
+        position: absolute;
+        top: 46%;
+        transform: translateY(-90%);
+        right: -7%;
+        color: #52ec61;
+        font-size: 20px;
+        border: none;
+    }
+
+    .phone-checkout-failed {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 7%;
+        color: #ff0037;
+        font-size: 20px;
+        border: none;
+    }
+
+    .phone-checkout-correct {
+        position: absolute;
+        top: 46%;
+        transform: translateY(-90%);
+        right: -6.5%;
+        color: #52ec61;
+        font-size: 20px;
+        border: none;
+    }
+
+    
+    .datetime-checkout-failed {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 18.50%;
+        color: #ff0037;
+        font-size: 20px;
+        border: none;
+    }
+
+    .datetime-checkout-correct {
+        position: absolute;
+        top: 46%;
+        transform: translateY(-90%);
+        right: -7%;
+        color: #52ec61;
+        font-size: 20px;
+        border: none;
+    }
+
+    .gender-checkout-failed {
+        position: absolute;
+        top: 47%;
+        transform: translateY(-50%);
+        right: 14%;
+        color: #ff0037;
+        font-size: 20px;
+        border: none;
+    }
+
+    .gender-checkout-correct {
+        position: absolute;
+        top: 46%;
+        transform: translateY(-90%);
+        right: -2%;
         color: #52ec61;
         font-size: 20px;
         border: none;
