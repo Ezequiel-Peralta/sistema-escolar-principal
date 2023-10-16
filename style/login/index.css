@@ -2320,6 +2320,8 @@ img {
         width: 100%;
         /* margin-right: -35px; */
         margin-right: 5px;
+    } .wrap-datetime .input-field input{
+        width: 70px !important;
     }
 
 
@@ -2428,7 +2430,7 @@ img {
         /* margin-left: -40px; */
         margin-right: -40px;
     } .stage1-content .input-field input {
-        /* width: 230px; */
+        width: 230px;
     }
 }
 
