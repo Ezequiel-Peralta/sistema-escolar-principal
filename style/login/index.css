@@ -1565,7 +1565,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .tooltip-error {
     visibility: hidden;
-    width: 145px;
+    width: 520px;
+    height: 40px;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -1574,8 +1575,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     z-index: 2000;
     bottom: 100%;
-    left: 50%;
-    margin-left: -72.16px;
+    left: -100px; 
     opacity: 0;
     transition: opacity 0.2s;
 }
@@ -2573,6 +2573,36 @@ img {
         font-size: 20px;
         border: none;
     }
+
+    .tooltip-error {
+        visibility: hidden;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 10px 15px;
+        position: absolute;
+        z-index: 2000;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.2s;
+        white-space: nowrap;
+    }
+    
+    .tooltip-error::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+    }
+    
+
 }
 
 @media screen and (max-width: 400px) {
