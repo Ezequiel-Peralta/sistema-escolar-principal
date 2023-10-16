@@ -2448,6 +2448,9 @@ img {
         width: 230px;
         margin-right: 0; /* Elimina el margen derecho */
     }
+    .stage1-content .input-field #lname, #phone {
+        margin-left: 20px;
+    }
 }
 
 @media screen and (max-width: 400px) {
