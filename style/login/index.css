@@ -2434,9 +2434,9 @@ img {
     }
     .stage1-content .input-field {
         /* margin-left: -40px; */
-        margin-right: -40px;
+        /* margin-right: -40px; */
     } .stage1-content .input-field input {
-        width: 230px;
+        
     }
 
     .stage1-content {
@@ -2445,7 +2445,8 @@ img {
     }
 
     .stage1-content .input-field input {
-        width: 100%; /* O el ancho deseado */
+        width: 230px;
+        margin-left: 40px;
         margin-right: 0; /* Elimina el margen derecho */
     }
 }
