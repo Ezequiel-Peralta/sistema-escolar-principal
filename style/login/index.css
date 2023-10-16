@@ -2318,7 +2318,7 @@ img {
         align-items: center;
         width: 100%;
         /* margin-right: -35px; */
-        margin-right: -10px;
+        margin-right: 0px;
     } .wrap-datetime .input-field input{
         width: 70px !important;
     }
