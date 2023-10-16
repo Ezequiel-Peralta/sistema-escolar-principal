@@ -2445,11 +2445,11 @@ img {
     }
 
     .stage1-content .input-field input {
-        width: 230px;
+        width: 240px;
         margin-right: 0; /* Elimina el margen derecho */
     }
     .stage1-content .input-field #lname, #phone {
-        margin-left: 4px;
+        margin-left: 5px;
     }
 }
 
