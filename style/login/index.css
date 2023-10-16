@@ -625,9 +625,8 @@ body {
 
 
 .signup-form-content {
-    width: 100%;
-    /* margin: 9% 21% 0 2.8%; */
-    margin: 20% 0 0 0;
+    width: 50%;
+    margin: 9% 21% 0 2.8%;
 }
 
 .input-container {
