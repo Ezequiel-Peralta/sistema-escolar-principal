@@ -1,7 +1,9 @@
 $(document).ready(function() {
-   
-
+    setTimeout(function() {
+        $(".loader").fadeOut("slow");
+    }, 100); 
 });
+
 // document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener("DOMContentLoaded", function () {
     // const URL_CP = "http://localhost:58805/api/CP/";
@@ -668,7 +670,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
             selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
-            selectOption.textContent = "Seleccionar localidad";
+            selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
@@ -686,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
             selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
-            selectOption.textContent = "Seleccionar localidad";
+            selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
@@ -704,7 +706,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
             selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
-            selectOption.textContent = "Seleccionar localidad";
+            selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
@@ -729,7 +731,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
             selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
-            selectOption.textContent = "Seleccionar localidad";
+            selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
@@ -746,7 +748,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
             selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
-            selectOption.textContent = "Seleccionar localidad";
+            selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
@@ -1637,7 +1639,7 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
                 elementInputLocalidad.innerHTML = ""; // Limpiar el select antes de agregar opciones
                 const selectOption = document.createElement("option");
                 selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
-                selectOption.textContent = "Seleccionar localidad";
+                selectOption.textContent = "Seleccionar";
                 selectOption.disabled = true;
                 selectOption.selected = true;
                 elementInputLocalidad.appendChild(selectOption);
@@ -1835,8 +1837,9 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
                 toolTip0.textContent = "Información personal";
               
                 // stageno0.textContent = "1";
-                stageno0.innerText = "✔";
+               
                 stageno0.style.color = "#fff !important";
+                stageno0.innerText = "✔";
 
                 toolTip1.textContent = "Información dirección";
                 stageno1.textContent = "2";
@@ -2000,8 +2003,9 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         signupContent4.classList.add("hiddenElement");
 
         stageBtns1.classList.add("hiddenElement");
-        stageBtns2.classList.remove("hiddenElement");
-        stageBtns3.classList.add("hiddenElement");
+        stageBtns2.classList.add("hiddenElement");
+        stageBtns3.classList.remove("hiddenElement");
+        stageBtns4.classList.add("hiddenElement");
 
         scrollContainer.scrollLeft = 0;
 
@@ -2018,13 +2022,228 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
             stageno0.innerText = "✔";
             stageno0.style.color = "#52EC61 !important";
 
-            toolTip1.textContent = "Información dirección";
-            stageno1.textContent = "2";
+            toolTip1.textContent = "Contacto emergencia";
+            stageno1.textContent = "3";
 
-            toolTip2.textContent = "Contacto emergencia";
-            stageno2.textContent = "3";
+            toolTip2.textContent = "Información cuenta";
+            stageno2.textContent = "4";
         }, 100);    
     });
 
+    nextBtnStage4.addEventListener('click', () => {
+        signupContent1.classList.add("hiddenElement");
+        signupContent3.classList.add("hiddenElement");
+        signupContent2.classList.add("hiddenElement");
+        signupContent4.classList.add("hiddenElement");
+        signupContent5.classList.remove("hiddenElement");
 
+        stageBtns1.classList.add("hiddenElement");
+        stageBtns2.classList.add("hiddenElement");
+        stageBtns3.classList.add("hiddenElement");
+        stageBtns4.classList.add("hiddenElement");
+        stageBtns5.classList.remove("hiddenElement");
+        stageBtns6.classList.add("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        setTimeout(() => {  
+            toolTip0.style.color = "#ae0e30";
+            toolTip0.textContent = "Información cuenta";
+              
+            // stageno0.textContent = "1";
+            stageno0.innerText = "✔";
+            stageno0.style.color = "white !important";
+
+            toolTip1.textContent = "Imagen cuenta";
+            stageno1.textContent = "5";
+
+            toolTip2.textContent = "Finalizar registro";
+            stageno2.textContent = "6"; 
+        }, 100);
+        document.querySelector(".current-item-mobile").classList.add("green-background");
+        stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+        stageno0.style.backgroundColor = "#52ec61";
+    });
+
+
+    prevBtnStage5.addEventListener('click', () => {
+        signupContent1.classList.add("hiddenElement");
+        signupContent3.classList.add("hiddenElement");
+        signupContent2.classList.add("hiddenElement");
+        signupContent4.classList.remove("hiddenElement");
+        signupContent5.classList.add("hiddenElement");
+
+        stageBtns1.classList.add("hiddenElement");
+        stageBtns2.classList.add("hiddenElement");
+        stageBtns3.classList.add("hiddenElement");
+        stageBtns4.classList.remove("hiddenElement");
+        stageBtns5.classList.add("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        setTimeout(() => {
+            // stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            document.querySelector(".current-item-mobile").classList.remove("grey-background");
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            document.querySelector(".current-item-mobile").classList.remove("white-background");
+            stageno0.style.backgroundColor = "#52EC61";
+            toolTip0.style.color = "#ae0e30";
+            toolTip0.textContent = "Contacto emergencia";
+                
+            // stageno0.textContent = "1";
+            stageno0.innerText = "✔";
+            stageno0.style.color = "#52EC61 !important";
+
+            toolTip1.textContent = "Información cuenta";
+            stageno1.textContent = "4";
+
+            toolTip2.textContent = "Imagen cuenta";
+            stageno2.textContent = "5";
+        }, 100);    
+    });
+
+    nextBtnStage5.addEventListener('click', () => {
+        signupContent1.classList.add("hiddenElement");
+        signupContent3.classList.add("hiddenElement");
+        signupContent2.classList.add("hiddenElement");
+        signupContent4.classList.add("hiddenElement");
+        signupContent5.classList.add("hiddenElement");
+        signupContent6.classList.remove("hiddenElement");
+
+        stageBtns1.classList.add("hiddenElement");
+        stageBtns2.classList.add("hiddenElement");
+        stageBtns3.classList.add("hiddenElement");
+        stageBtns4.classList.add("hiddenElement");
+        stageBtns5.classList.add("hiddenElement");
+        stageBtns6.classList.remove("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        setTimeout(() => {  
+            toolTip0.style.color = "#ae0e30";
+            toolTip0.textContent = "Imagen cuenta";
+              
+            // stageno0.textContent = "1";
+            stageno0.innerText = "✔";
+            stageno0.style.color = "white !important";
+
+            toolTip1.textContent = "Finalizar registro";
+            stageno1.textContent = "6";
+
+            toolTip2.textContent = "";
+            stageno2.textContent = ""; 
+        }, 100);
+        document.querySelector(".last-item-mobile").classList.add("white-background");
+        document.querySelector(".current-item-mobile").classList.add("green-background");
+        // stageno6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+        stageno6.style.backgroundColor = "#fff";
+        stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+        stageno0.style.backgroundColor = "#52ec61";
+    });
+
+    prevBtnStage6.addEventListener('click', () => {
+        signupContent1.classList.add("hiddenElement");
+        signupContent3.classList.add("hiddenElement");
+        signupContent2.classList.add("hiddenElement");
+        signupContent4.classList.add("hiddenElement");
+        signupContent5.classList.remove("hiddenElement");
+        signupContent6.classList.add("hiddenElement");
+
+        stageBtns1.classList.add("hiddenElement");
+        stageBtns2.classList.add("hiddenElement");
+        stageBtns3.classList.add("hiddenElement");
+        stageBtns4.classList.add("hiddenElement");
+        stageBtns5.classList.remove("hiddenElement");
+        stageBtns6.classList.add("hiddenElement");
+
+        scrollContainer.scrollLeft = 0;
+
+        setTimeout(() => {
+            // stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            document.querySelector(".current-item-mobile").classList.remove("grey-background");
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            document.querySelector(".current-item-mobile").classList.remove("white-background");
+            stageno0.style.backgroundColor = "#52EC61";
+            toolTip0.style.color = "#ae0e30";
+            toolTip0.textContent = "Información cuenta";
+                
+            // stageno0.textContent = "1";
+            stageno0.innerText = "✔";
+            stageno0.style.color = "#52EC61 !important";
+
+            toolTip1.textContent = "Imagen cuenta";
+            stageno1.textContent = "5";
+
+            toolTip2.textContent = "Finalizar registro";
+            stageno2.textContent = "6";
+        }, 100);    
+    });
+
+    nextBtnStage6.addEventListener('click', () => {
+            signupContent1.classList.add("hiddenElement");
+            signupContent3.classList.add("hiddenElement");
+            signupContent2.classList.add("hiddenElement");
+            signupContent4.classList.add("hiddenElement");
+            signupContent5.classList.add("hiddenElement");
+            signupContent6.classList.add("hiddenElement");
+            
+            stageBtns1.classList.add("hiddenElement");
+            stageBtns2.classList.add("hiddenElement");
+            stageBtns3.classList.add("hiddenElement");
+            stageBtns4.classList.add("hiddenElement");
+            stageBtns5.classList.add("hiddenElement");
+            stageBtns6.classList.add("hiddenElement");
+
+            scrollContainer.scrollLeft = 0;
+
+            setTimeout(() => {  
+                toolTip0.style.color = "#ae0e30";
+                toolTip0.textContent = "Imagen cuenta";
+                
+                // stageno0.textContent = "1";
+                stageno0.innerText = "✔";
+                stageno0.style.color = "white !important";
+
+                toolTip1.textContent = "Finalizar registro";
+                stageno1.textContent = "✔";
+                stageno1.style.color = "white !important";
+
+                toolTip2.textContent = "";
+                stageno2.textContent = ""; 
+            }, 100);
+            document.querySelector(".last-item-mobile").classList.add("white-background");
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            // stageno6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno6.style.backgroundColor = "#fff";
+
+            stageno1.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno1.style.backgroundColor = "#52ec61";
+            stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno0.style.backgroundColor = "#52ec61";
+
+            const popUpAnimationContent = document.getElementsByClassName("popupAnimation");
+
+            if (popUpAnimationContent.length > 0) {
+                const firstPopUpAnimation = popUpAnimationContent[0]; // Tomamos el primer elemento
+
+                const imgElement = firstPopUpAnimation.querySelector('img');
+                imgElement.src = '/assets/Login/sucessPopup.png';
+
+                const h2Element = firstPopUpAnimation.querySelector('h2');
+                h2Element.textContent = 'Registro Completado';
+
+                const pElement = firstPopUpAnimation.querySelector('p');
+                pElement.textContent = 'Su cuenta ha sido registrada con éxito. Ahora su solicitud se encuentra en proceso de revisión para su habilitación. Le notificaremos una vez que su cuenta haya sido aprobada.';
+
+                const btnElement = firstPopUpAnimation.querySelector('.btn-accept');
+
+                MostrarBackgroundDesenfocado();
+                firstPopUpAnimation.classList.remove("hiddenElement");
+
+                btnElement.addEventListener('click', () => {
+                    OcultarBackgroundDesenfocado();
+                    firstPopUpAnimation.classList.add("hiddenElement");
+                });
+            }
+    });
 });

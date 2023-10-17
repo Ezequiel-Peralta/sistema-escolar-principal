@@ -31,7 +31,7 @@
 
 <body>
     <div class="container" id="container">
-       
+        <div class="loader"></div>
         <div class="toggle-slidemenu">
             <button class="btn-open-slidemenu">
                 <div class="bar-btn-slidemenu">
@@ -157,7 +157,7 @@
                         <p class="tool-tip" id="tool-tip-4-mobile">Información de cuenta</p>
                         <p class="stageno stageno-4">4</p>
                     </div>
-                    <div class="stage">
+                    <div class="stage last-item-mobile">
                         <p class="tool-tip" id="tool-tip-5-mobile">Imagen de cuenta</p>
                         <p class="stageno stageno-5">5</p>
                     </div>
@@ -258,13 +258,13 @@
                             <label for="localidad field-heading" class="lbl-localidad"><span class="txt-localidad">Localidad*</span></label>
                             <div class="input-field">
                                 <select class="select-localidad" id="localidad" name="localidad" required>
-                                    <option value="" disabled selected><span>Seleccionar localidad</span></option>
+                                    <option value="" disabled selected><span>Seleccionar</span></option>
                                 </select>
+                                <i class="fa fa-times localidad-checkout-failed hiddenElement" aria-hidden="true">
+                                    <span class="tooltip-error tooltip-error-localidad"></span>
+                                </i>
+                                <i class="fa fa-check localidad-checkout-correct hiddenElement" aria-hidden="true"></i>
                             </div>
-                            <i class="fa fa-times localidad-checkout-failed hiddenElement" aria-hidden="true">
-                                <span class="tooltip-error tooltip-error-localidad"></span>
-                            </i>
-                            <i class="fa fa-check localidad-checkout-correct hiddenElement" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="input-container">
@@ -294,9 +294,9 @@
                 <div class="stage3-content hiddenElement">
                     <div class="input-container">
                         <div class="wrap-relationship-selection">
-                            <label for="relationship field-heading" class="lbl-relationship"><span
-                                    class="txt-relationship">Relación</span></label>
+                            <label for="relationship field-heading" class="lbl-relationship"><span class="txt-relationship">Relación</span></label>
                             <select class="select-relationship" id="relationship" name="relationship" required>
+                                <option value="" disabled selected><span>Seleccionar</span></option>
                                 <option value="father">Padre</option>
                                 <option value="mother">Madre</option>
                                 <option value="brother-sister">Hermano/a</option>
@@ -341,8 +341,9 @@
                             </i>
                             <i class="fa fa-check email-checkout-correct hiddenElement" aria-hidden="true"></i>
                         </div>
-                        
-                        <input type="button" name="confirmemail" class="confirmemail btnDisabled" id="confirmemail" value="Verificar Email">
+                        <div class="input-field">
+                            <input type="button" name="confirmemail" class="confirmemail btnDisabled" id="confirmemail" value="Verificar Email">
+                        </div>
                     </div>
                     <div class="input-container">
                         <div class="input-field">
@@ -355,10 +356,9 @@
                         
                         <div class="wrap-typeuser-selection">
                             <div class="input-field">
-                                <label for="typeuser field-heading" class="lbl-typeuser"><span class="txt-typeuser">Tipo de
-                                    usuario*</span></label>
+                                <label for="typeuser field-heading" class="lbl-typeuser"><span class="txt-typeuser">Tipo de usuario*</span></label>
                                 <select class="select-typeuser" id="typeuser" name="typeuser" required>
-                                    <option value="" disabled selected><span>Seleccionar tipo de usuario</span></option>
+                                    <option value="" disabled selected><span>Seleccionar</span></option>
                                     <option value="preceptor">Preceptor</option>
                                     <option value="teacher">Docente</option>
                                     <option value="studentparent">Padre</option>
@@ -483,7 +483,8 @@
                 </div>
                 <div class="btns-mobile stage-btns-6 hiddenElement">
                     <input type="button" value="Volver" class="previousPage stagebtn6a">
-                    <button type="submit" value="" class="stagebtn6b btn-register btnDisabled">Registrarse</button>
+                    <!-- <button type="submit" value="" class="stagebtn6b btn-register btnDisabled">Registrarse</button> -->
+                    <input type="button" value="Registrarse" class="btn-register stagebtn6b">
                 </div>
             </div>
         </div>
