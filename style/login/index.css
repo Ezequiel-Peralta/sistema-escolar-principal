@@ -5304,6 +5304,7 @@ img {
 
     .pagination-btns-mobile {
         display: block !important;
+        margin: 0 0 0 1px;
     }
     
     .cointaner-stage-mobile {
@@ -5314,12 +5315,9 @@ img {
         display: none;
     }
 
-    /* .logo-slidemenu {
-        width: 300px;
-        height: 70%;
-        top: 18px;
-        left: 82px;
-    } */
+    .logo-slidemenu {
+        margin: 0 0 0 20px;
+    }
 
     .slide-sigin, .slide-sigup {
         width: 300px;
@@ -5353,7 +5351,7 @@ img {
     }
  
     .cointaner-stage-mobile .big-heading{
-        margin: -12px 0 0 60px;
+        margin: -4px 0 0 60px;
     }
     
     .signup-form-content {
