@@ -1189,7 +1189,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('browse_image').click();
 });
 
-// var checkUserImage = false;
+var checkUserImage = false;
 
 document.getElementById('browse_image').addEventListener('change', function(e) {
     var files = e.target.files;
@@ -1250,10 +1250,19 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         roundedImage.src = roundedCanvas.toDataURL();
         roundedImage.style.width = '150px'; // Establece el ancho en 200px
         roundedImage.style.height = '150px'; // Establece la altura en 200px
-        // checkUserImage = true;
 
         result.innerHTML = '';
         result.appendChild(roundedImage);
+
+        if (document.querySelector('.roundedImage')) {
+            checkUserImage = true;
+            console.log('El usuario ha recortado una imagen.');
+        } else {
+            checkUserImage = false;
+            console.log('El usuario no ha recortado una imagen aún.');
+        }
+        console.log(checkUserImage);
+        checkState5();
         };
         function getRoundedCanvas(sourceCanvas) {
           var canvas = document.createElement('canvas');
@@ -1270,12 +1279,14 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
           context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
           context.fill();
           return canvas;
-          
-      }
-    //   checkState5();
+         
+        }
+   
+        
     }
-    
+
 });
+
 
 
     const signupContent = document.querySelector(".signup-form-container"),
@@ -1338,16 +1349,17 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         }
     }
 
-    // function checkState5() {
-    
-    //     if (checkUserImage === true) {
-    //         stagebtn5b.classList.remove("btnDisabled");
-    //         return true;
-    //     } else {
-    //         stagebtn5b.classList.add("btnDisabled");
-    //         return false;
-    //     }
-    // }
+    function checkState5() {
+        if (checkUserImage === true) {
+            stagebtn5b.classList.remove("btnDisabled");
+            nextBtnStage5.classList.remove("btnDisabled");
+            return true;
+        } else {
+            stagebtn5b.classList.add("btnDisabled");
+            nextBtnStage5.classList.add("btnDisabled");
+            return false;
+        }
+    }
 
     function checkState6() {
         if (stateCheckboxTc === true) {
@@ -1532,7 +1544,7 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         
     });
     stagebtn5b.addEventListener('click', () => {
-        // if (checkState5() === true) {
+        if (checkState5() === true) {
             signupContent1.classList.add("hiddenElement");
             signupContent3.classList.add("hiddenElement");
             signupContent2.classList.add("hiddenElement");
@@ -1554,9 +1566,9 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
 
             document.querySelector(".stage:nth-child(6)").classList.add("green-background");
             
-        // } else {
-        //     stagebtn5b.classList.add("btnDisabled");
-        // }
+        } else {
+            stagebtn5b.classList.add("btnDisabled");
+        }
     });
 
 
@@ -1963,37 +1975,41 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     });
 
     nextBtnStage3.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.remove("hiddenElement");
-  
-        stageBtns1.classList.add("hiddenElement");
-        stageBtns2.classList.add("hiddenElement");
-        stageBtns3.classList.add("hiddenElement");
-        stageBtns4.classList.remove("hiddenElement");
-        stageBtns5.classList.add("hiddenElement");
-        stageBtns6.classList.add("hiddenElement");
+        // if (checkState3() === true) {
+            signupContent1.classList.add("hiddenElement");
+            signupContent3.classList.add("hiddenElement");
+            signupContent2.classList.add("hiddenElement");
+            signupContent4.classList.remove("hiddenElement");
+    
+            stageBtns1.classList.add("hiddenElement");
+            stageBtns2.classList.add("hiddenElement");
+            stageBtns3.classList.add("hiddenElement");
+            stageBtns4.classList.remove("hiddenElement");
+            stageBtns5.classList.add("hiddenElement");
+            stageBtns6.classList.add("hiddenElement");
 
-        scrollContainer.scrollLeft = 0;
+            scrollContainer.scrollLeft = 0;
 
-        setTimeout(() => {  
-            toolTip0.style.color = "#ae0e30";
-            toolTip0.textContent = "Contacto emergencia";
-              
-            // stageno0.textContent = "1";
-            stageno0.innerText = "✔";
-            stageno0.style.color = "white !important";
+            setTimeout(() => {  
+                toolTip0.style.color = "#ae0e30";
+                toolTip0.textContent = "Contacto emergencia";
+                
+                // stageno0.textContent = "1";
+                stageno0.innerText = "✔";
+                stageno0.style.color = "white !important";
 
-            toolTip1.textContent = "Información cuenta";
-            stageno1.textContent = "4";
+                toolTip1.textContent = "Información cuenta";
+                stageno1.textContent = "4";
 
-            toolTip2.textContent = "Imagen cuenta";
-            stageno2.textContent = "5"; 
-        }, 100);
-        document.querySelector(".current-item-mobile").classList.add("green-background");
-        stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-        stageno0.style.backgroundColor = "#52ec61";
+                toolTip2.textContent = "Imagen cuenta";
+                stageno2.textContent = "5"; 
+            }, 100);
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno0.style.backgroundColor = "#52ec61";
+        // } else {
+        //     nextBtnStage3.classList.add("btnDisabled");
+        // }
     });
 
     prevBtnStage4.addEventListener('click', () => {
@@ -2031,38 +2047,42 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     });
 
     nextBtnStage4.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.add("hiddenElement");
-        signupContent5.classList.remove("hiddenElement");
+        if (checkState4() === true) {
+            signupContent1.classList.add("hiddenElement");
+            signupContent3.classList.add("hiddenElement");
+            signupContent2.classList.add("hiddenElement");
+            signupContent4.classList.add("hiddenElement");
+            signupContent5.classList.remove("hiddenElement");
 
-        stageBtns1.classList.add("hiddenElement");
-        stageBtns2.classList.add("hiddenElement");
-        stageBtns3.classList.add("hiddenElement");
-        stageBtns4.classList.add("hiddenElement");
-        stageBtns5.classList.remove("hiddenElement");
-        stageBtns6.classList.add("hiddenElement");
+            stageBtns1.classList.add("hiddenElement");
+            stageBtns2.classList.add("hiddenElement");
+            stageBtns3.classList.add("hiddenElement");
+            stageBtns4.classList.add("hiddenElement");
+            stageBtns5.classList.remove("hiddenElement");
+            stageBtns6.classList.add("hiddenElement");
 
-        scrollContainer.scrollLeft = 0;
+            scrollContainer.scrollLeft = 0;
 
-        setTimeout(() => {  
-            toolTip0.style.color = "#ae0e30";
-            toolTip0.textContent = "Información cuenta";
-              
-            // stageno0.textContent = "1";
-            stageno0.innerText = "✔";
-            stageno0.style.color = "white !important";
+            setTimeout(() => {  
+                toolTip0.style.color = "#ae0e30";
+                toolTip0.textContent = "Información cuenta";
+                
+                // stageno0.textContent = "1";
+                stageno0.innerText = "✔";
+                stageno0.style.color = "white !important";
 
-            toolTip1.textContent = "Imagen cuenta";
-            stageno1.textContent = "5";
+                toolTip1.textContent = "Imagen cuenta";
+                stageno1.textContent = "5";
 
-            toolTip2.textContent = "Finalizar registro";
-            stageno2.textContent = "6"; 
-        }, 100);
-        document.querySelector(".current-item-mobile").classList.add("green-background");
-        stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-        stageno0.style.backgroundColor = "#52ec61";
+                toolTip2.textContent = "Finalizar registro";
+                stageno2.textContent = "6"; 
+            }, 100);
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno0.style.backgroundColor = "#52ec61";
+        } else {
+            nextBtnStage4.classList.add("btnDisabled");
+        }
     });
 
 
@@ -2103,42 +2123,46 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     });
 
     nextBtnStage5.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.add("hiddenElement");
-        signupContent5.classList.add("hiddenElement");
-        signupContent6.classList.remove("hiddenElement");
+        if (checkState5() === true) {
+            signupContent1.classList.add("hiddenElement");
+            signupContent3.classList.add("hiddenElement");
+            signupContent2.classList.add("hiddenElement");
+            signupContent4.classList.add("hiddenElement");
+            signupContent5.classList.add("hiddenElement");
+            signupContent6.classList.remove("hiddenElement");
 
-        stageBtns1.classList.add("hiddenElement");
-        stageBtns2.classList.add("hiddenElement");
-        stageBtns3.classList.add("hiddenElement");
-        stageBtns4.classList.add("hiddenElement");
-        stageBtns5.classList.add("hiddenElement");
-        stageBtns6.classList.remove("hiddenElement");
+            stageBtns1.classList.add("hiddenElement");
+            stageBtns2.classList.add("hiddenElement");
+            stageBtns3.classList.add("hiddenElement");
+            stageBtns4.classList.add("hiddenElement");
+            stageBtns5.classList.add("hiddenElement");
+            stageBtns6.classList.remove("hiddenElement");
 
-        scrollContainer.scrollLeft = 0;
+            scrollContainer.scrollLeft = 0;
 
-        setTimeout(() => {  
-            toolTip0.style.color = "#ae0e30";
-            toolTip0.textContent = "Imagen cuenta";
-              
-            // stageno0.textContent = "1";
-            stageno0.innerText = "✔";
-            stageno0.style.color = "white !important";
+            setTimeout(() => {  
+                toolTip0.style.color = "#ae0e30";
+                toolTip0.textContent = "Imagen cuenta";
+                
+                // stageno0.textContent = "1";
+                stageno0.innerText = "✔";
+                stageno0.style.color = "white !important";
 
-            toolTip1.textContent = "Finalizar registro";
-            stageno1.textContent = "6";
+                toolTip1.textContent = "Finalizar registro";
+                stageno1.textContent = "6";
 
-            toolTip2.textContent = "";
-            stageno2.textContent = ""; 
-        }, 100);
-        document.querySelector(".last-item-mobile").classList.add("white-background");
-        document.querySelector(".current-item-mobile").classList.add("green-background");
-        // stageno6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-        stageno6.style.backgroundColor = "#fff";
-        stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-        stageno0.style.backgroundColor = "#52ec61";
+                toolTip2.textContent = "";
+                stageno2.textContent = ""; 
+            }, 100);
+            document.querySelector(".last-item-mobile").classList.add("white-background");
+            document.querySelector(".current-item-mobile").classList.add("green-background");
+            // stageno6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno6.style.backgroundColor = "#fff";
+            stageno0.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageno0.style.backgroundColor = "#52ec61";
+        } else {
+            nextBtnStage5.classList.add("btnDisabled");
+        }
     });
 
     prevBtnStage6.addEventListener('click', () => {
@@ -2180,6 +2204,7 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     });
 
     nextBtnStage6.addEventListener('click', () => {
+        if (checkState6() === true) {
             signupContent1.classList.add("hiddenElement");
             signupContent3.classList.add("hiddenElement");
             signupContent2.classList.add("hiddenElement");
@@ -2245,5 +2270,8 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
                     firstPopUpAnimation.classList.add("hiddenElement");
                 });
             }
+        } else {
+            nextBtnStage6.classList.add("btnDisabled");
+        }
     });
 });
