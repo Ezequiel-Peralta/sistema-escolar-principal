@@ -4,436 +4,326 @@ $(document).ready(function() {
     }, 100); 
 });
 
-// document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener("DOMContentLoaded", function () {
-    // const URL_CP = "http://localhost:58805/api/CP/";
-    // // const URL_CP = "http://localhost:53133/api/CpCordoba/";
-    // const URL_CP = "https://DBSISTEMAESCOLAR.mssql.somee.com/api/CpCordoba/";
-    const URL_CP = "https://www.sistemaescolaripdf.somee.com/api/CpCordoba/";
+    const URL_CP = "https://www.sistemaescolaripdf.somee.com/api/CpCordoba/",
+    container = document.getElementById('container'),
+    registerBtn = document.getElementById('btn-register'),
+    loginBtn = document.getElementById('btn-login'),
+    signup = document.querySelector('.sign-up'),
+    signin = document.querySelector('.sign-in'),
+    registerBtnSlidemenu = document.getElementById("btn-register-slidemenu"),
+    loginBtnSlidemenu = document.getElementById("btn-login-slidemenu"),
+    toggleSlideMenu = document.querySelector(".toggle-slidemenu"),
+    btnSlideMenu = document.querySelector('.btn-open-slidemenu'),
+    containerSlideMenu = document.querySelector('.container-slidemenu'),
+    slideSigin = document.querySelector('.slide-sigin'),
+    slideSigup = document.querySelector('.slide-sigup');
+  
+    function hiddenElement(...elements) {
+        elements.forEach((element) => {
+            element.classList.add("hiddenElement");
+        });
+    }
 
-    const container = document.getElementById('container');
-    const registerBtn = document.getElementById('btn-register');
-    const loginBtn = document.getElementById('btn-login');
-    const signup = document.querySelector('.sign-up');
-    const signin = document.querySelector('.sign-in');
+    function showElement(...elements) {
+        elements.forEach((element) => {
+            element.classList.remove("hiddenElement");
+        });
+    }
 
-    const registerBtnSlidemenu = document.getElementById("btn-register-slidemenu");
-    const loginBtnSlidemenu = document.getElementById("btn-login-slidemenu")
-    const toggleSlideMenu = document.querySelector(".toggle-slidemenu");
-    const btnSlideMenu = document.querySelector('.btn-open-slidemenu');
-    const containerSlideMenu = document.querySelector('.container-slidemenu');
-    const slideSigin = document.querySelector('.slide-sigin');
-    const slideSigup = document.querySelector('.slide-sigup');
+    function activeOrInactiveElement(element, state) {
+        if (state === "active" || state === "ACTIVE") {
+            element.classList.add("active");
+        } else if (state === "inactive" || state === "INACTIVE") {
+            element.classList.remove("active");
+        }
+    }
 
-    slideSigup.style.display = "none";
+    function IsActiveElement(element, state) {
+        if (state === "yes" || state === "YES") {
+            element.classList.add("is-active");
+        } else if (state === "no" || state === "NO") {
+            element.classList.remove("is-active");
+        }
+    }
 
     registerBtn.addEventListener('click', () => {
-        container.classList.add("active");
-        signin.classList.add("hiddenElement");
-        signup.classList.remove("hiddenElement");
+        activeOrInactiveElement(container, "active");
+        hiddenElement(signin);
+        showElement(signup);
     });
-    
 
     registerBtnSlidemenu.addEventListener('click', () => {
-        container.classList.add("active");
-        containerSlideMenu.classList.add("hiddenElement");
-        signin.classList.add("hiddenElement");
-        signup.classList.remove("hiddenElement");
-
+        activeOrInactiveElement(container, "active");
         toggleSlideMenu.style.backgroundColor = "transparent";
-        btnSlideMenu.classList.remove("is-active");
-
-        slideSigin.style.display = "none";
-        slideSigup.style.display = "flex";
+        IsActiveElement(btnSlideMenu, "no")
+        hiddenElement(containerSlideMenu, signin, slideSigin);
+        showElement(signup, slideSigup);
     });
 
     loginBtnSlidemenu.addEventListener('click', () => {
-        container.classList.remove("active");
-        containerSlideMenu.classList.add("hiddenElement");
-        signin.classList.remove("hiddenElement");
-        signup.classList.add("hiddenElement");
-
+        activeOrInactiveElement(container, "active");
         toggleSlideMenu.style.backgroundColor = "transparent";
-        btnSlideMenu.classList.remove("is-active");
-
-        slideSigin.style.display = "flex";
-        slideSigup.style.display = "none";
+        IsActiveElement(btnSlideMenu, "no");
+        hiddenElement(containerSlideMenu, signup, slideSigup);
+        showElement(signin,slideSigin);
     });
     
     loginBtn.addEventListener('click', () => {
-        container.classList.remove("active");
-        signup.classList.add("hiddenElement");
-        signin.classList.remove("hiddenElement");
+        activeOrInactiveElement(container, "active");
+        hiddenElement(signup);
+        showElement(signin);
     });
 
-    $("#showPassBtn").click(function() {
-        const passInput = $("#txtpass");
+    function togglePasswordInput(inputId, buttonId) {
+        const passInput = $(`#${inputId}`);
         const passType = passInput.attr("type");
+        const button = $(`#${buttonId}`);
 
-        if (passType === "password") {
-            passInput.attr("type", "text");
-            $(this).html('<i class="fa fa-eye" aria-hidden="true" style="color: #ae0e30;"></i>');
-        } else {
-            passInput.attr("type", "password");
-            $(this).html('<i class="fa fa-eye-slash" aria-hidden="true" style="color: #ae0e30;"></i>');
-        }
-    });
+        passInput.attr("type", passType === "password" ? "text" : "password");
+        button.html(
+            passType === "password"
+            ? '<i class="fa fa-eye" aria-hidden="true" style="color: #ae0e30;"></i>'
+            : '<i class="fa fa-eye-slash" aria-hidden="true" style="color: #ae0e30;"></i>'
+        );
+    }
 
-    $("#showPassBtnRegister").click(function() {
-        const passInputRegister = $("#password");
-        const passType = passInputRegister.attr("type");
+    $("#showPassBtn").click(() => togglePasswordInput("txtpass", "showPassBtn"));
+    $("#showPassBtnRegister").click(() => togglePasswordInput("password", "showPassBtnRegister"));
+    $("#showPassconfirmBtnRegister").click(() => togglePasswordInput("confirmpassword", "showPassconfirmBtnRegister"));
 
-        if (passType === "password") {
-            passInputRegister.attr("type", "text");
-            $(this).html('<i class="fa fa-eye" aria-hidden="true" style="color: #ae0e30;"></i>');
-        } else {
-            passInputRegister.attr("type", "password");
-            $(this).html('<i class="fa fa-eye-slash" aria-hidden="true" style="color: #ae0e30;"></i>');
-        }
-    });
-
-    
-    $("#showPassconfirmBtnRegister").click(function() {
-        const passconfirmInputRegister = $("#confirmpassword");
-        const passType = passconfirmInputRegister.attr("type");
-
-        if (passType === "password") {
-            passconfirmInputRegister.attr("type", "text");
-            $(this).html('<i class="fa fa-eye" aria-hidden="true" style="color: #ae0e30;"></i>');
-        } else {
-            passconfirmInputRegister.attr("type", "password");
-            $(this).html('<i class="fa fa-eye-slash" aria-hidden="true" style="color: #ae0e30;"></i>');
-        }
-    });
-
-    const btnOpenTerms = document.querySelector('.btn-open-terms');
-    const btnCloseTerms = document.querySelector('.btn-close-terms');
-    const wrapTerms = document.querySelector(".wrap-terms");
-    
+    const btnOpenTerms = document.querySelector('.btn-open-terms'),
+    btnCloseTerms = document.querySelector('.btn-close-terms'),
+    wrapTerms = document.querySelector(".wrap-terms"),
+    btnAcceptTerms = document.querySelector(".btn-accept-terms");
 
     btnOpenTerms.addEventListener('click', () => {
-        wrapTerms.classList.remove("hiddenElement");
+        showElement(wrapTerms);
         MostrarBackgroundDesenfocado();
     });
     btnCloseTerms.addEventListener('click', () => {
-        wrapTerms.classList.add("hiddenElement");
+        hiddenElement(wrapTerms);
         OcultarBackgroundDesenfocado();
     });
+    btnAcceptTerms.addEventListener('click', () => {
+        checkboxTc.checked = true;
+        stateCheckboxTc = true;
+        hiddenElement(wrapTerms);
+        OcultarBackgroundDesenfocado();
+        checkState6();
+    });
 
-
-
-    // confirmemail.addEventListener('click', () => {
-    //     var codeLength = 12;
-    //     var code = "";
-    //     for (var i = 0; i <= codeLength; i++) {
-    //         var randomNumber = Math.floor(Math.random() * chars.length);
-    //         code += chars.substring(randomNumber, randomNumber +1);
-    //     }
-    //     console.log(code);
-    // });
-    
-    
-
-    /*BACKGROUND CON DESENFOQUE*/
     function MostrarBackgroundDesenfocado() {
         var BackgroundDesenfocado = document.createElement("div");
         BackgroundDesenfocado.classList.add("Background-Desenfocado");
-    
-        /*
-        var elementoPadre = document.querySelector("contenido");
-        elementoPadre.appendChild(BackgroundDesenfocado);*/
         document.body.appendChild(BackgroundDesenfocado);
-    
     }
-    /*QUITAR BACKGROUND CON DESENFOQUE*/
+
     function OcultarBackgroundDesenfocado() {
         var BackgroundDesenfocado = document.querySelector(".Background-Desenfocado");
         if (BackgroundDesenfocado) {
             BackgroundDesenfocado.parentNode.removeChild(BackgroundDesenfocado);
         }
-    
     }
     
-    const inputDatetime = document.getElementById('datetime');
-    const lblDatetimeElements = document.getElementsByClassName('lbl-datetime');
-    const inputGender = document.getElementById('gender');
-    const lblGenderElements = document.getElementsByClassName('lbl-gender');
-    const inputRelationship = document.getElementById('relationship');
-    const lblRelationshipElements = document.getElementsByClassName('lbl-relationship');
-    const inputTypeuser = document.getElementById('typeuser');
-    const lblTypeuserElements = document.getElementsByClassName('lbl-typeuser');
-    const inputLocalidad = document.getElementById('localidad');
-    const lblLocalidadElements = document.getElementsByClassName('lbl-localidad');
+    const inputDatetime = document.getElementById('datetime'),
+    lblDatetimeElements = document.getElementsByClassName('lbl-datetime'),
+    inputGender = document.getElementById('gender'),
+    lblGenderElements = document.getElementsByClassName('lbl-gender'),
+    inputRelationship = document.getElementById('relationship'),
+    lblRelationshipElements = document.getElementsByClassName('lbl-relationship'),
+    inputTypeuser = document.getElementById('typeuser'),
+    lblTypeuserElements = document.getElementsByClassName('lbl-typeuser'),
+    inputLocalidad = document.getElementById('localidad'),
+    lblLocalidadElements = document.getElementsByClassName('lbl-localidad');
+
+    function applyShadowAndTransition(inputElement, lblElements, isFocus) {
+        const shadowValue = isFocus ? '-1.28pt 0 0.1pt 0.8pt #ae0e30' : 'none';
+        const transitionValue = isFocus ? 'all 200ms ease-in' : 'none';
+      
+        for (let i = 0; i < lblElements.length; i++) {
+          lblElements[i].style.boxShadow = shadowValue;
+          lblElements[i].style.transition = transitionValue;
+        }
+      
+        inputElement.style.boxShadow = shadowValue;
+        inputElement.style.transition = transitionValue;
+    }
 
     inputLocalidad.addEventListener('focus', () => {
-        // Aplica el box-shadow y la transición a cada elemento lbl-datetime
-        for (let i = 0; i < lblLocalidadElements.length; i++) {
-            lblLocalidadElements[i].style.boxShadow = '-1.28pt 0 0.1pt 0.8pt #ae0e30';
-            lblLocalidadElements[i].style.transition = 'all 200ms ease-in';
-        }
-
-        // Aplica el box-shadow y la transición a input-datetime
-        inputLocalidad.style.boxShadow = '1.28pt 0 0.1pt 0.8pt #ae0e30';
-        inputLocalidad.style.transition = 'all 200ms ease-in';
+        applyShadowAndTransition(inputLocalidad, lblLocalidadElements, true);
     });
-
-    // Agrega un evento blur al input-datetime para quitar la sombra cuando se pierde el foco
     inputLocalidad.addEventListener('blur', () => {
-        // Quita el box-shadow y la transición de cada elemento lbl-datetime
-        for (let i = 0; i < lblLocalidadElements.length; i++) {
-            lblLocalidadElements[i].style.boxShadow = 'none';
-            lblLocalidadElements[i].style.transition = 'none';
-        }
-
-        // Quita el box-shadow y la transición de input-datetime
-        inputLocalidad.style.boxShadow = 'none';
-        inputLocalidad.style.transition = 'none';
+        applyShadowAndTransition(inputLocalidad, lblLocalidadElements, false);
     });
 
-
-    // Agrega un evento focus al input-datetime
     inputDatetime.addEventListener('focus', () => {
-        // Aplica el box-shadow y la transición a cada elemento lbl-datetime
-        for (let i = 0; i < lblDatetimeElements.length; i++) {
-            lblDatetimeElements[i].style.boxShadow = '-1.28pt 0 0.1pt 0.8pt #ae0e30';
-            lblDatetimeElements[i].style.transition = 'all 200ms ease-in';
-        }
-
-        // Aplica el box-shadow y la transición a input-datetime
-        inputDatetime.style.boxShadow = '1.28pt 0 0.1pt 0.8pt #ae0e30';
-        inputDatetime.style.transition = 'all 200ms ease-in';
+        applyShadowAndTransition(inputDatetime, lblDatetimeElements, true);
     });
-
-    // Agrega un evento blur al input-datetime para quitar la sombra cuando se pierde el foco
     inputDatetime.addEventListener('blur', () => {
-        // Quita el box-shadow y la transición de cada elemento lbl-datetime
-        for (let i = 0; i < lblDatetimeElements.length; i++) {
-            lblDatetimeElements[i].style.boxShadow = 'none';
-            lblDatetimeElements[i].style.transition = 'none';
-        }
-
-        // Quita el box-shadow y la transición de input-datetime
-        inputDatetime.style.boxShadow = 'none';
-        inputDatetime.style.transition = 'none';
+        applyShadowAndTransition(inputDatetime, lblDatetimeElements, false);
     });
-
 
     inputGender.addEventListener('focus', () => {
-        // Aplica el box-shadow y la transición a cada elemento lbl-datetime
-        for (let i = 0; i < lblGenderElements.length; i++) {
-            lblGenderElements[i].style.boxShadow = '-1.28pt 0 0.1pt 0.8pt #ae0e30';
-            lblGenderElements[i].style.transition = 'all 200ms ease-in';
-        }
-
-        // Aplica el box-shadow y la transición a input-datetime
-        inputGender.style.boxShadow = '1.28pt 0 0.1pt 0.8pt #ae0e30';
-        inputGender.style.transition = 'all 200ms ease-in';
+        applyShadowAndTransition(inputGender, lblGenderElements, true);
     });
-
-    // Agrega un evento blur al input-datetime para quitar la sombra cuando se pierde el foco
     inputGender.addEventListener('blur', () => {
-        // Quita el box-shadow y la transición de cada elemento lbl-datetime
-        for (let i = 0; i < lblGenderElements.length; i++) {
-            lblGenderElements[i].style.boxShadow = 'none';
-            lblGenderElements[i].style.transition = 'none';
-        }
-
-        // Quita el box-shadow y la transición de input-datetime
-        inputGender.style.boxShadow = 'none';
-        inputGender.style.transition = 'none';
+        applyShadowAndTransition(inputGender, lblGenderElements, false);
     });
-
-
+      
     inputRelationship.addEventListener('focus', () => {
-        // Aplica el box-shadow y la transición a cada elemento lbl-datetime
-        for (let i = 0; i < lblRelationshipElements.length; i++) {
-            lblRelationshipElements[i].style.boxShadow = '-1.28pt 0 0.1pt 0.8pt #ae0e30';
-            lblRelationshipElements[i].style.transition = 'all 200ms ease-in';
-        }
-
-        // Aplica el box-shadow y la transición a input-datetime
-        inputRelationship.style.boxShadow = '1.28pt 0 0.1pt 0.8pt #ae0e30';
-        inputRelationship.style.transition = 'all 200ms ease-in';
+        applyShadowAndTransition(inputRelationship, lblRelationshipElements, true);
     });
-
-    // Agrega un evento blur al input-datetime para quitar la sombra cuando se pierde el foco
     inputRelationship.addEventListener('blur', () => {
-        // Quita el box-shadow y la transición de cada elemento lbl-datetime
-        for (let i = 0; i < lblRelationshipElements.length; i++) {
-            lblRelationshipElements[i].style.boxShadow = 'none';
-            lblRelationshipElements[i].style.transition = 'none';
-        }
-
-        // Quita el box-shadow y la transición de input-datetime
-        inputRelationship.style.boxShadow = 'none';
-        inputRelationship.style.transition = 'none';
+        applyShadowAndTransition(inputRelationship, lblRelationshipElements, false);
     });
-
-
+      
     inputTypeuser.addEventListener('focus', () => {
-        // Aplica el box-shadow y la transición a cada elemento lbl-datetime
-        for (let i = 0; i < lblTypeuserElements.length; i++) {
-            lblTypeuserElements[i].style.boxShadow = '-1.28pt 0 0.1pt 0.8pt #ae0e30';
-            lblTypeuserElements[i].style.transition = 'all 200ms ease-in';
-        }
-
-        // Aplica el box-shadow y la transición a input-datetime
-        inputTypeuser.style.boxShadow = '1.28pt 0 0.1pt 0.8pt #ae0e30';
-        inputTypeuser.style.transition = 'all 200ms ease-in';
+        applyShadowAndTransition(inputTypeuser, lblTypeuserElements, true);
+    });
+      inputTypeuser.addEventListener('blur', () => {
+        applyShadowAndTransition(inputTypeuser, lblTypeuserElements, false);
     });
 
-    // Agrega un evento blur al input-datetime para quitar la sombra cuando se pierde el foco
-    inputTypeuser.addEventListener('blur', () => {
-        // Quita el box-shadow y la transición de cada elemento lbl-datetime
-        for (let i = 0; i < lblTypeuserElements.length; i++) {
-            lblTypeuserElements[i].style.boxShadow = 'none';
-            lblTypeuserElements[i].style.transition = 'none';
-        }
-
-        // Quita el box-shadow y la transición de input-datetime
-        inputTypeuser.style.boxShadow = 'none';
-        inputTypeuser.style.transition = 'none';
-    });
-
-  
-
-    const inputName = document.getElementById('fname');
-    const failedIconName = document.querySelector('.name-checkout-failed');
-    const correctIconName = document.querySelector('.name-checkout-correct');
-    const tooltipErrorName = document.querySelector('.tooltip-error-name');
+    const inputName = document.getElementById('fname'),
+    failedIconName = document.querySelector('.name-checkout-failed'),
+    correctIconName = document.querySelector('.name-checkout-correct'),
+    tooltipErrorName = document.querySelector('.tooltip-error-name');
     let stateName = false;
 
-    const inputLastname = document.getElementById('lname');
-    const failedIconLastname = document.querySelector('.lastname-checkout-failed');
-    const correctIconLastname= document.querySelector('.lastname-checkout-correct');
-    const tooltipErrorLastname = document.querySelector('.tooltip-error-lastname');
+    const inputLastname = document.getElementById('lname'),
+        failedIconLastname = document.querySelector('.lastname-checkout-failed'),
+        correctIconLastname = document.querySelector('.lastname-checkout-correct'),
+        tooltipErrorLastname = document.querySelector('.tooltip-error-lastname');
     let stateLastname = false;
 
-    const inputDni = document.getElementById('dni');
-    const failedIconDni = document.querySelector('.dni-checkout-failed');
-    const correctIconDni= document.querySelector('.dni-checkout-correct');
-    const tooltipErrorDni = document.querySelector('.tooltip-error-dni');
+    const inputDni = document.getElementById('dni'),
+        failedIconDni = document.querySelector('.dni-checkout-failed'),
+        correctIconDni = document.querySelector('.dni-checkout-correct'),
+        tooltipErrorDni = document.querySelector('.tooltip-error-dni');
     let stateDni = false;
 
-    const inputPhone = document.getElementById('phone');
-    const failedIconPhone = document.querySelector('.phone-checkout-failed');
-    const correctIconPhone = document.querySelector('.phone-checkout-correct');
-    const tooltipErrorPhone = document.querySelector('.tooltip-error-phone');
+    const inputPhone = document.getElementById('phone'),
+        failedIconPhone = document.querySelector('.phone-checkout-failed'),
+        correctIconPhone = document.querySelector('.phone-checkout-correct'),
+        tooltipErrorPhone = document.querySelector('.tooltip-error-phone');
     let statePhone = false;
 
-    const inputDateTime = document.getElementById('datetime');
-    const failedIconDatetime = document.querySelector('.datetime-checkout-failed');
-    const correctIconDatetime = document.querySelector('.datetime-checkout-correct');
-    const tooltipErrorDatetime = document.querySelector('.tooltip-error-datetime');
+    const inputDateTime = document.getElementById('datetime'),
+        failedIconDatetime = document.querySelector('.datetime-checkout-failed'),
+        correctIconDatetime = document.querySelector('.datetime-checkout-correct'),
+        tooltipErrorDatetime = document.querySelector('.tooltip-error-datetime');
     let stateDatetime = false;
 
-    const selectGender = document.getElementById('gender');
-    const failedIconGender = document.querySelector('.gender-checkout-failed');
-    const correctIconGender = document.querySelector('.gender-checkout-correct');
-    const tooltipErrorGender = document.querySelector('.tooltip-error-gender');
+    const selectGender = document.getElementById('gender'),
+        failedIconGender = document.querySelector('.gender-checkout-failed'),
+        correctIconGender = document.querySelector('.gender-checkout-correct'),
+        tooltipErrorGender = document.querySelector('.tooltip-error-gender');
     let stateGender = false;
 
-    const inputPostalcode = document.getElementById('postalcode');
-    const failedIconPostalcode = document.querySelector('.postalcode-checkout-failed');
-    const correctIconPostalcode = document.querySelector('.postalcode-checkout-correct');
-    const tooltipErrorPostalcode = document.querySelector('.tooltip-error-postalcode');
+    const inputPostalcode = document.getElementById('postalcode'),
+        failedIconPostalcode = document.querySelector('.postalcode-checkout-failed'),
+        correctIconPostalcode = document.querySelector('.postalcode-checkout-correct'),
+        tooltipErrorPostalcode = document.querySelector('.tooltip-error-postalcode');
     let statePostalcode = false;
 
-    const selectLocalidad = document.getElementById('localidad');
-    const failedIconLocalidad = document.querySelector('.localidad-checkout-failed');
-    const correctIconLocalidad = document.querySelector('.localidad-checkout-correct');
-    const tooltipErrorLocalidad = document.querySelector('.tooltip-error-localidad');
+    const selectLocalidad = document.getElementById('localidad'),
+        failedIconLocalidad = document.querySelector('.localidad-checkout-failed'),
+        correctIconLocalidad = document.querySelector('.localidad-checkout-correct'),
+        tooltipErrorLocalidad = document.querySelector('.tooltip-error-localidad'),
+        selectElementLocalidad = document.getElementById("localidad");
     let stateLocalidad = false;
 
-    const inputStreet = document.getElementById('street');
-    const failedIconStreet = document.querySelector('.street-checkout-failed');
-    const correctIconStreet = document.querySelector('.street-checkout-correct');
-    const tooltipErrorStreet = document.querySelector('.tooltip-error-street');
+    const inputStreet = document.getElementById('street'),
+        failedIconStreet = document.querySelector('.street-checkout-failed'),
+        correctIconStreet = document.querySelector('.street-checkout-correct'),
+        tooltipErrorStreet = document.querySelector('.tooltip-error-street');
     let stateStreet = false;
 
-    const inputStreetnumber = document.getElementById('streetnumber');
-    const failedIconStreetnumber = document.querySelector('.streetnumber-checkout-failed');
-    const correctIconStreetnumber = document.querySelector('.streetnumber-checkout-correct');
-    const tooltipErrorStreetnumber = document.querySelector('.tooltip-error-streetnumber');
+    const inputStreetnumber = document.getElementById('streetnumber'),
+        failedIconStreetnumber = document.querySelector('.streetnumber-checkout-failed'),
+        correctIconStreetnumber = document.querySelector('.streetnumber-checkout-correct'),
+        tooltipErrorStreetnumber = document.querySelector('.tooltip-error-streetnumber');
     let stateStreetnumber = false;
 
-    const inputEmail = document.getElementById('email');
-    const failedIconEmail = document.querySelector('.email-checkout-failed');
-    const correctIconEmail = document.querySelector('.email-checkout-correct');
-    const tooltipErrorEmail = document.querySelector('.tooltip-error-email');
+    const inputEmail = document.getElementById('email'),
+        failedIconEmail = document.querySelector('.email-checkout-failed'),
+        correctIconEmail = document.querySelector('.email-checkout-correct'),
+        tooltipErrorEmail = document.querySelector('.tooltip-error-email');
     let stateEmail = false;
 
     const inputConfirmemail = document.getElementById('confirmemail');
     let stateConfirmemail = false;
 
-    const inputMatricula = document.getElementById('matricula');
-    const failedIconMatricula = document.querySelector('.matricula-checkout-failed');
-    const correctIconMatricula = document.querySelector('.matricula-checkout-correct');
-    const tooltipErrorMatricula = document.querySelector('.tooltip-error-matricula');
+    const inputMatricula = document.getElementById('matricula'),
+        failedIconMatricula = document.querySelector('.matricula-checkout-failed'),
+        correctIconMatricula = document.querySelector('.matricula-checkout-correct'),
+        tooltipErrorMatricula = document.querySelector('.tooltip-error-matricula');
     let stateMatricula = false;
 
-    const selectTypeuser = document.getElementById('typeuser');
-    const failedIconTypeuser = document.querySelector('.typeuser-checkout-failed');
-    const correctIconTypeuser = document.querySelector('.typeuser-checkout-correct');
-    const tooltipErrorTypeuser = document.querySelector('.tooltip-error-typeuser');
+    const selectTypeuser = document.getElementById('typeuser'),
+        failedIconTypeuser = document.querySelector('.typeuser-checkout-failed'),
+        correctIconTypeuser = document.querySelector('.typeuser-checkout-correct'),
+        tooltipErrorTypeuser = document.querySelector('.tooltip-error-typeuser');
     let stateTypeuser = false;
 
-    const inputPassword = document.getElementById('password');
-    const failedIconPassword = document.querySelector('.password-checkout-failed');
-    const correctIconPassword = document.querySelector('.password-checkout-correct');
-    const tooltipErrorPassword = document.querySelector('.tooltip-error-password');
+    const inputPassword = document.getElementById('password'),
+        failedIconPassword = document.querySelector('.password-checkout-failed'),
+        correctIconPassword = document.querySelector('.password-checkout-correct'),
+        tooltipErrorPassword = document.querySelector('.tooltip-error-password');
     let statePassword = false;
 
-    const inputConfirmpassword = document.getElementById('confirmpassword');
-    const failedIconConfirmpassword = document.querySelector('.confirmpassword-checkout-failed');
-    const correctIconConfirmpassword = document.querySelector('.confirmpassword-checkout-correct');
-    const tooltipErrorConfirmpassword = document.querySelector('.tooltip-error-confirmpassword');
+    const inputConfirmpassword = document.getElementById('confirmpassword'),
+        failedIconConfirmpassword = document.querySelector('.confirmpassword-checkout-failed'),
+        correctIconConfirmpassword = document.querySelector('.confirmpassword-checkout-correct'),
+        tooltipErrorConfirmpassword = document.querySelector('.tooltip-error-confirmpassword');
     let stateConfirmpassword = false;
 
     const btnRegister = document.getElementsByClassName("btn-register");
     const checkboxTc = document.getElementById("tc");
     let stateCheckboxTc = false;
 
-    tooltipErrorName.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorLastname.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorDni.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorPhone.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorDatetime.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorGender.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorPostalcode.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorStreet.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorStreetnumber.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorEmail.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorMatricula.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorTypeuser.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorPassword.textContent = "Campo inválido. No puede dejar el campo vacío.";
-    tooltipErrorConfirmpassword.textContent = "Campo inválido. No puede dejar el campo vacío.";
+    const errorMessage = "Campo inválido. No puede dejar el campo vacío.";
+    tooltipErrorName.textContent = errorMessage;
+    tooltipErrorLastname.textContent = errorMessage;
+    tooltipErrorDni.textContent = errorMessage;
+    tooltipErrorPhone.textContent = errorMessage;
+    tooltipErrorDatetime.textContent = errorMessage;
+    tooltipErrorGender.textContent = errorMessage;
+    tooltipErrorPostalcode.textContent = errorMessage;
+    tooltipErrorLocalidad.textContent = errorMessage;
+    tooltipErrorStreet.textContent = errorMessage;
+    tooltipErrorStreetnumber.textContent = errorMessage;
+    tooltipErrorEmail.textContent = errorMessage;
+    tooltipErrorMatricula.textContent = errorMessage;
+    tooltipErrorTypeuser.textContent = errorMessage;
+    tooltipErrorPassword.textContent = errorMessage;
+    tooltipErrorConfirmpassword.textContent = errorMessage;
    
     inputName.addEventListener('focus', () => {
         if (!stateName) {
-            failedIconName.classList.remove('hiddenElement');
-            correctIconName.classList.add('hiddenElement');
+            showElement(failedIconName);
+            hiddenElement(correctIconName);
         } else {
-            failedIconName.classList.add('hiddenElement');
-            correctIconName.classList.remove('hiddenElement');
+            hiddenElement(failedIconName);
+            showElement(correctIconName);
         }
     });
     inputName.addEventListener('input', () => {
         const valueName = inputName.value.trim(); 
-        
+    
         if (valueName === '') {
-            failedIconName.classList.remove('hiddenElement');
-            correctIconName.classList.add('hiddenElement');
-            tooltipErrorName.textContent = "Campo inválido. No puede dejar el campo vacío.";
+            showElement(failedIconName);
+            hiddenElement(correctIconName);
+            tooltipErrorName.textContent = errorMessage;
             stateName = false;
         } else if (/^[A-Za-z\sáéíóúüñÁÉÍÓÚÜÑ]*$/.test(valueName)) {
-            failedIconName.classList.add('hiddenElement');
-            correctIconName.classList.remove('hiddenElement');
+            hiddenElement(failedIconName);
+            showElement(correctIconName);
             stateName = true;
         } else {
-            failedIconName.classList.remove('hiddenElement');
-            correctIconName.classList.add('hiddenElement');
+            showElement(failedIconName);
+            hiddenElement(correctIconName);
             tooltipErrorName.textContent = "Campo inválido. Ingrese solo letras.";
             stateName = false;
         }
@@ -442,80 +332,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inputLastname.addEventListener('focus', () => {
         if (!stateLastname) {
-            failedIconLastname.classList.remove('hiddenElement');
-            correctIconLastname.classList.add('hiddenElement');
+            showElement(failedIconLastname);
+            hiddenElement(correctIconLastname);
         } else {
-            failedIconLastname.classList.add('hiddenElement');
-            correctIconLastname.classList.remove('hiddenElement');
+            hiddenElement(failedIconLastname);
+            showElement(correctIconLastname);
         }
     });
-    
     inputLastname.addEventListener('input', () => {
-        const valueLastname = inputLastname.value.trim(); 
-        
+        const valueLastname = inputLastname.value.trim();
+    
         if (valueLastname === '') {
-            failedIconLastname.classList.remove('hiddenElement');
-            correctIconLastname.classList.add('hiddenElement');
-            tooltipErrorLastname.textContent = "Campo inválido. No puede dejar el campo vacío.";
+            showElement(failedIconLastname);
+            hiddenElement(correctIconLastname);
+            tooltipErrorLastname.textContent = errorMessage;
             stateLastname = false;
         } else if (/^[A-Za-z\sáéíóúüñÁÉÍÓÚÜÑ]*$/.test(valueLastname)) {
-            failedIconLastname.classList.add('hiddenElement');
-            correctIconLastname.classList.remove('hiddenElement');
-
+            hiddenElement(failedIconLastname);
+            showElement(correctIconLastname);
             stateLastname = true;
         } else {
-            failedIconLastname.classList.remove('hiddenElement');
-            correctIconLastname.classList.add('hiddenElement');
+            showElement(failedIconLastname);
+            hiddenElement(correctIconLastname);
             tooltipErrorLastname.textContent = "Campo inválido. Ingrese solo letras.";
             stateLastname = false;
         }
         checkState1();
     });
-
+    
     inputDni.addEventListener('focus', () => {
         if (!stateDni) {
-            failedIconDni.classList.remove('hiddenElement');
-            correctIconDni.classList.add('hiddenElement');
+            showElement(failedIconDni);
+            hiddenElement(correctIconDni);
         } else {
-            failedIconDni.classList.add('hiddenElement');
-            correctIconDni.classList.remove('hiddenElement');
+            showElement(correctIconDni);
+            hiddenElement(failedIconDni);
         }
     });
     inputDni.addEventListener('input', () => {
         const valueDni = inputDni.value.trim();
         
         if (valueDni === '') {
-            failedIconDni.classList.remove('hiddenElement');
-            correctIconDni.classList.add('hiddenElement');
+            showElement(failedIconDni);
+            hiddenElement(correctIconDni);
             tooltipErrorDni.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateDni = false;
         } else if ((/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueDni)) && (/[A-Za-z]/.test(valueDni))) {
-            // El campo contiene símbolos y letras juntas
-            failedIconDni.classList.remove('hiddenElement');
-            correctIconDni.classList.add('hiddenElement');
+            hiddenElement(correctIconDni);
+            showElement(failedIconDni);
             tooltipErrorDni.textContent = "Campo inválido. No debe contener símbolos ni letras.";
             stateDni = false;
         } else if (/[A-Za-z]/.test(valueDni)) {
-            // El campo contiene solo letras
-            failedIconDni.classList.remove('hiddenElement');
-            correctIconDni.classList.add('hiddenElement');
+            hiddenElement(correctIconDni);
+            showElement(failedIconDni);
             tooltipErrorDni.textContent = "Campo inválido. No debe contener letras.";
             stateDni = false;
         } else if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueDni)) {
-            // El campo contiene símbolos
-            failedIconDni.classList.remove('hiddenElement');
-            correctIconDni.classList.add('hiddenElement');
+            hiddenElement(correctIconDni);
+            showElement(failedIconDni);
             tooltipErrorDni.textContent = "Campo inválido. No puede contener símbolos.";
             stateDni = false;
         }  else if (/^[0-9]+$/.test(valueDni) && (valueDni.length === 7 || valueDni.length === 8)) {
-            // El campo contiene solo números y está en el rango de 7 u 8 dígitos
-            failedIconDni.classList.add('hiddenElement');
-            correctIconDni.classList.remove('hiddenElement');
-            tooltipErrorDni.textContent = ""; // Borra el mensaje de error al ser válido
+            showElement(correctIconDni);
+            hiddenElement(failedIconDni);
+            tooltipErrorDni.textContent = ""; 
             stateDni = true;
         } else {
-            failedIconDni.classList.remove('hiddenElement');
-            correctIconDni.classList.add('hiddenElement');
+            hiddenElement(correctIconDni);
+            showElement(failedIconDni);
             tooltipErrorDni.textContent = "Campo inválido. No pueden introducir más de 8 dígitos.";
             stateDni = false;
         }
@@ -524,230 +408,208 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inputPhone.addEventListener('focus', () => {
         if (!statePhone) {
-            failedIconPhone.classList.remove('hiddenElement');
-            correctIconPhone.classList.add('hiddenElement');
+            showElement(failedIconPhone);
+            hiddenElement(correctIconPhone);
         } else {
-            failedIconPhone.classList.add('hiddenElement');
-            correctIconPhone.classList.remove('hiddenElement');
+            hiddenElement(failedIconPhone);
+            showElement(correctIconPhone);
         }
     });
     inputPhone.addEventListener('input', () => {
         const valuePhone = inputPhone.value.trim();
         
         if (valuePhone === '') {
-            failedIconPhone.classList.remove('hiddenElement');
-            correctIconPhone.classList.add('hiddenElement');
+            showElement(failedIconPhone);
+            hiddenElement(correctIconPhone);
             tooltipErrorPhone.textContent = "Campo inválido. No puede dejar el campo vacío.";
             statePhone = false;
         } else if ((/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valuePhone)) && (/[A-Za-z]/.test(valuePhone))) {
-            // El campo contiene símbolos y letras juntas
-            failedIconPhone.classList.remove('hiddenElement');
-            correctIconPhone.classList.add('hiddenElement');
+            hiddenElement(correctIconPhone);
+            showElement(failedIconPhone);
             tooltipErrorPhone.textContent = "Campo inválido. No debe contener símbolos ni letras.";
             statePhone = false;
         } else if (/[A-Za-z]/.test(valuePhone)) {
-            // El campo contiene solo letras
-            failedIconPhone.classList.remove('hiddenElement');
-            correctIconPhone.classList.add('hiddenElement');
+            hiddenElement(correctIconPhone);
+            showElement(failedIconPhone);
             tooltipErrorPhone.textContent = "Campo inválido. No debe contener letras.";
             statePhone = false;
         } else if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valuePhone)) {
-            // El campo contiene símbolos
-            failedIconPhone.classList.remove('hiddenElement');
-            correctIconPhone.classList.add('hiddenElement');
+            hiddenElement(correctIconPhone);
+            showElement(failedIconPhone);
             tooltipErrorPhone.textContent = "Campo inválido. No puede contener símbolos.";
             statePhone = false;
         }  else if (/^[0-9]+$/.test(valuePhone) && (valuePhone.length >= 7 && valuePhone.length <= 10)) {
-            // El campo contiene solo números y está en el rango de 7 u 10 dígitos
-            failedIconPhone.classList.add('hiddenElement');
-            correctIconPhone.classList.remove('hiddenElement');
-            tooltipErrorPhone.textContent = ""; // Borra el mensaje de error al ser válido
+            showElement(correctIconPhone);
+            hiddenElement(failedIconPhone);
+            tooltipErrorPhone.textContent = ""; 
             statePhone = true;
         } else if (valuePhone.length <= 7) {
-            failedIconPhone.classList.remove('hiddenElement');
-            correctIconPhone.classList.add('hiddenElement');
+            hiddenElement(correctIconPhone);
+            showElement(failedIconPhone);
             tooltipErrorPhone.textContent = "Campo inválido. Cantidad de dígitos insuficientes.";
             statePhone = false;
         } else {
-            failedIconPhone.classList.remove('hiddenElement');
-            correctIconPhone.classList.add('hiddenElement');
+            hiddenElement(correctIconPhone);
+            showElement(failedIconPhone);
             tooltipErrorPhone.textContent = "Campo inválido. No pueden introducir más de 10 dígitos.";
             statePhone = false;
         }
         checkState1();
     });
-
-    inputDatetime.addEventListener('focus', () => {
+    
+    inputDateTime.addEventListener('focus', () => {
         if (!stateDatetime) {
-            failedIconDatetime.classList.remove('hiddenElement');
-            correctIconDatetime.classList.add('hiddenElement');
+            showElement(failedIconDatetime);
+            hiddenElement(correctIconDatetime);
         } else {
-            failedIconDatetime.classList.add('hiddenElement');
-            correctIconDatetime.classList.remove('hiddenElement');
+            hiddenElement(failedIconDatetime);
+            showElement(correctIconDatetime);
         }
     });
-    // inputDatetime.addEventListener('blur', () => {
-    //     // Cuando el campo pierde el foco, oculta los íconos
-    //     failedIconDatetime.classList.add('hiddenElement');
-    //     correctIconDatetime.classList.add('hiddenElement');
-    // });
     inputDateTime.addEventListener('input', () => {
         const selectedDate = new Date(inputDateTime.value);
-        const minDate = new Date('1930-01-01'); 
-        const maxDate = new Date('2005-12-31'); 
+        const minDate = new Date('1930-01-01');
+        const maxDate = new Date('2005-12-31');
     
         if (!isNaN(selectedDate.getTime()) && selectedDate >= minDate && selectedDate <= maxDate) {
-            failedIconDatetime.classList.add('hiddenElement');
-            correctIconDatetime.classList.remove('hiddenElement');
-            tooltipErrorDatetime.textContent = ""; 
+            hiddenElement(failedIconDatetime);
+            showElement(correctIconDatetime);
+            tooltipErrorDatetime.textContent = "";
             stateDatetime = true;
         } else if (selectedDate <= minDate || selectedDate > maxDate) {
-            failedIconDatetime.classList.remove('hiddenElement');
-            correctIconDatetime.classList.add('hiddenElement');
+            showElement(failedIconDatetime);
+            hiddenElement(correctIconDatetime);
             tooltipErrorDatetime.textContent = "Campo inválido. Debe seleccionar una fecha válida.";
             stateDatetime = false;
         }
         checkState1();
     });
-
+    
     selectGender.addEventListener('focus', () => {
         if (!stateGender) {
-            failedIconGender.classList.remove('hiddenElement');
-            correctIconGender.classList.add('hiddenElement');
+            showElement(failedIconGender);
+            hiddenElement(correctIconGender);
         } else {
-            failedIconGender.classList.add('hiddenElement');
-            correctIconGender.classList.remove('hiddenElement');
+            hiddenElement(failedIconGender);
+            showElement(correctIconGender);
         }
     });
-
     selectGender.addEventListener('input', () => {
         const selectedValue = selectGender.value;
     
         if (selectedValue === '') {
-            // No se ha seleccionado ningún valor
-            failedIconGender.classList.remove('hiddenElement');
-            correctIconGender.classList.add('hiddenElement');
+            hiddenElement(correctIconGender);
+            showElement(failedIconGender);
             tooltipErrorGender.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateGender = false;
-        } else if (selectedValue != '') {
-            // Se ha seleccionado un valor
-            failedIconGender.classList.add('hiddenElement');
-            correctIconGender.classList.remove('hiddenElement');
+        } else {
+            hiddenElement(failedIconGender);
+            showElement(correctIconGender);
             stateGender = true;
         }
         checkState1();
     });
-
-    const selectElementLocalidad = document.getElementById("localidad");
-
+    
     inputPostalcode.addEventListener('focus', () => {
         if (!statePostalcode) {
-            failedIconPostalcode.classList.remove('hiddenElement');
-            correctIconPostalcode.classList.add('hiddenElement');
+            showElement(failedIconPostalcode);
+            hiddenElement(correctIconPostalcode);
         } else {
-            failedIconPostalcode.classList.add('hiddenElement');
-            correctIconPostalcode.classList.remove('hiddenElement');
+            hiddenElement(failedIconPostalcode);
+            showElement(correctIconPostalcode);
         }
     });
     inputPostalcode.addEventListener('input', () => {
         const valuePostalcode = inputPostalcode.value.trim();
         
         if (valuePostalcode === '') {
-            failedIconPostalcode.classList.remove('hiddenElement');
-            correctIconPostalcode.classList.add('hiddenElement');
+            showElement(failedIconPostalcode);
+            hiddenElement(correctIconPostalcode);
             tooltipErrorPostalcode.textContent = "Campo inválido. No puede dejar el campo vacío.";
             statePostalcode = false;
         } else if ((/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valuePostalcode)) && (/[A-Za-z]/.test(valuePostalcode))) {
-            // El campo contiene símbolos y letras juntas
-            failedIconPostalcode.classList.remove('hiddenElement');
-            correctIconPostalcode.classList.add('hiddenElement');
+            showElement(failedIconPostalcode);
+            hiddenElement(correctIconPostalcode);
             tooltipErrorPostalcode.textContent = "Campo inválido. No debe contener símbolos ni letras.";
             statePostalcode = false;
 
-            failedIconLocalidad.classList.add('hiddenElement');
-            correctIconLocalidad.classList.add('hiddenElement');
+            hiddenElement(failedIconLocalidad, correctIconLocalidad);
             tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
-            selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
+            selectOption.value = ""; 
             selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
             stateLocalidad = false;
         } else if (/[A-Za-z]/.test(valuePostalcode)) {
-            // El campo contiene solo letras
-            failedIconPostalcode.classList.remove('hiddenElement');
-            correctIconPostalcode.classList.add('hiddenElement');
+            showElement(failedIconPostalcode);
+            hiddenElement(correctIconPostalcode);
             tooltipErrorPostalcode.textContent = "Campo inválido. No debe contener letras.";
             statePostalcode = false;
 
-            failedIconLocalidad.classList.add('hiddenElement');
-            correctIconLocalidad.classList.add('hiddenElement');
+            hiddenElement(failedIconLocalidad, correctIconLocalidad);
             tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
-            selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
+            selectOption.value = "";
             selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
             stateLocalidad = false;
         } else if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valuePostalcode)) {
-            // El campo contiene símbolos
-            failedIconPostalcode.classList.remove('hiddenElement');
-            correctIconPostalcode.classList.add('hiddenElement');
+            showElement(failedIconPostalcode);
+            hiddenElement(correctIconPostalcode);
             tooltipErrorPostalcode.textContent = "Campo inválido. No puede contener símbolos.";
             statePostalcode = false;
 
-            failedIconLocalidad.classList.add('hiddenElement');
-            correctIconLocalidad.classList.add('hiddenElement');
+            hiddenElement(failedIconLocalidad, correctIconLocalidad);
             tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
-            selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
+            selectOption.value = ""; 
             selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
             stateLocalidad = false;
         }  else if (/^[0-9]+$/.test(valuePostalcode) && (valuePostalcode.length === 4)) {
-            // El campo contiene solo números y está en el rango de 7 u 10 dígitos
-            failedIconPostalcode.classList.add('hiddenElement');
-            correctIconPostalcode.classList.remove('hiddenElement');
-            tooltipErrorPostalcode.textContent = ""; // Borra el mensaje de error al ser válido
+            hiddenElement(failedIconPostalcode);
+            showElement(correctIconPostalcode);
+            tooltipErrorPostalcode.textContent = ""; 
             statePostalcode = true;
             LocalidadValue(valuePostalcode);
             validarCoordenadas();
         } else if (valuePostalcode.length < 4) {
-            failedIconPostalcode.classList.remove('hiddenElement');
-            correctIconPostalcode.classList.add('hiddenElement');
+            showElement(failedIconPostalcode);
+            hiddenElement(correctIconPostalcode);
             tooltipErrorPostalcode.textContent = "Campo inválido. Cantidad de dígitos insuficientes.";
             statePostalcode = false;
 
-            failedIconLocalidad.classList.add('hiddenElement');
-            correctIconLocalidad.classList.add('hiddenElement');
+            hiddenElement(failedIconLocalidad, correctIconLocalidad);
             tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
-            selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
+            selectOption.value = ""; 
             selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
             selectElementLocalidad.appendChild(selectOption);
             stateLocalidad = false;
         } else {
-            failedIconPostalcode.classList.remove('hiddenElement');
+            showElement(failedIconPostalcode);
+            hiddenElement(correctIconPostalcode);
             correctIconPostalcode.classList.add('hiddenElement');
             tooltipErrorPostalcode.textContent = "Campo inválido. No pueden introducir más de 4 dígitos.";
             statePostalcode = false;
 
-            failedIconLocalidad.classList.add('hiddenElement');
-            correctIconLocalidad.classList.add('hiddenElement');
+            hiddenElement(failedIconLocalidad, correctIconLocalidad);
             tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
             selectElementLocalidad.innerHTML = '';
             const selectOption = document.createElement("option");
-            selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
+            selectOption.value = ""; 
             selectOption.textContent = "Seleccionar";
             selectOption.disabled = true;
             selectOption.selected = true;
@@ -759,27 +621,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     selectLocalidad.addEventListener('focus', () => {
         if (!stateLocalidad) {
-            failedIconLocalidad.classList.remove('hiddenElement');
-            correctIconLocalidad.classList.add('hiddenElement');
+            showElement(failedIconLocalidad);
+            hiddenElement(correctIconLocalidad);
         } else {
-            failedIconLocalidad.classList.add('hiddenElement');
-            correctIconLocalidad.classList.remove('hiddenElement');
+            hiddenElement(failedIconLocalidad);
+            showElement(correctIconLocalidad);
         }
     });
-
     selectLocalidad.addEventListener('input', () => {
         const selectedValueLocalidad = selectLocalidad.value;
     
         if (selectedValueLocalidad === '') {
-            // No se ha seleccionado ningún valor
-            failedIconLocalidad.classList.remove('hiddenElement');
-            correctIconLocalidad.classList.add('hiddenElement');
+            hiddenElement(correctIconLocalidad);
+            showElement(failedIconLocalidad);
             tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateLocalidad = false;
-        } else if (selectedValueLocalidad != '') {
-            // Se ha seleccionado un valor
-            failedIconLocalidad.classList.add('hiddenElement');
-            correctIconLocalidad.classList.remove('hiddenElement');
+        } else if (selectedValueLocalidad !== '') {
+            showElement(correctIconLocalidad);
+            hiddenElement(failedIconLocalidad);
             stateLocalidad = true;
             validarCoordenadas();
         }
@@ -788,90 +647,86 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inputStreet.addEventListener('focus', () => {
         if (!stateStreet) {
-            failedIconStreet.classList.remove('hiddenElement');
-            correctIconStreet.classList.add('hiddenElement');
+            showElement(failedIconStreet);
+            hiddenElement(correctIconStreet);
         } else {
-            failedIconStreet.classList.add('hiddenElement');
-            correctIconStreet.classList.remove('hiddenElement');
+            hiddenElement(failedIconStreet);
+            showElement(correctIconStreet);
         }
     });
     inputStreet.addEventListener('input', () => {
         const valueStreet = inputStreet.value.trim(); 
         
         if (valueStreet === '') {
-            failedIconStreet.classList.remove('hiddenElement');
-            correctIconStreet.classList.add('hiddenElement');
+            hiddenElement(correctIconStreet);
+            showElement(failedIconStreet);
             tooltipErrorStreet.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateStreet = false;
         } else if (/^[A-Za-z\sáéíóúüñÁÉÍÓÚÜÑ]*$/.test(valueStreet)) {
-            failedIconStreet.classList.add('hiddenElement');
-            correctIconStreet.classList.remove('hiddenElement');
+            hiddenElement(failedIconStreet);
+            showElement(correctIconStreet);
             stateStreet = true;
             validarCoordenadas();
         } else if ((/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueStreet)) && (/[0-9]/.test(valueStreet))) {
-            failedIconStreet.classList.remove('hiddenElement');
-            correctIconStreet.classList.add('hiddenElement');
+            hiddenElement(correctIconStreet);
+            showElement(failedIconStreet);
             tooltipErrorStreet.textContent = "Campo inválido. No puede ingresar símbolos ni números.";
             stateStreet = false;
         } else if ((/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueStreet))) {
-            failedIconStreet.classList.remove('hiddenElement');
-            correctIconStreet.classList.add('hiddenElement');
+            hiddenElement(correctIconStreet);
+            showElement(failedIconStreet);
             tooltipErrorStreet.textContent = "Campo inválido. No puede ingresar símbolos.";
             stateStreet = false;
         } else {
-            failedIconStreet.classList.remove('hiddenElement');
-            correctIconStreet.classList.add('hiddenElement');
+            hiddenElement(correctIconStreet);
+            showElement(failedIconStreet);
             tooltipErrorStreet.textContent = "Campo inválido. No puede ingresar números.";
             stateStreet = false;
         }
         checkState2();
     });
-    
 
     inputStreetnumber.addEventListener('focus', () => {
         if (!stateStreetnumber) {
-            failedIconStreetnumber.classList.remove('hiddenElement');
-            correctIconStreetnumber.classList.add('hiddenElement');
+            showElement(failedIconStreetnumber);
+            hiddenElement(correctIconStreetnumber);
         } else {
-            failedIconStreetnumber.classList.add('hiddenElement');
-            correctIconStreetnumber.classList.remove('hiddenElement');
+            hiddenElement(failedIconStreetnumber);
+            showElement(correctIconStreetnumber);
         }
     });
     inputStreetnumber.addEventListener('input', () => {
         const valueStreetnumber = inputStreetnumber.value.trim();
         
         if (valueStreetnumber === '') {
-            failedIconStreetnumber.classList.remove('hiddenElement');
-            correctIconStreetnumber.classList.add('hiddenElement');
+            hiddenElement(correctIconStreetnumber);
+            showElement(failedIconStreetnumber);
             tooltipErrorStreetnumber.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateStreetnumber = false;
         } else if ((/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueStreetnumber)) && (/[A-Za-z]/.test(valueStreetnumber))) {
-            // El campo contiene símbolos y letras juntas
-            failedIconStreetnumber.classList.remove('hiddenElement');
-            correctIconStreetnumber.classList.add('hiddenElement');
+            hiddenElement(correctIconStreetnumber);
+            showElement(failedIconStreetnumber);
             tooltipErrorStreetnumber.textContent = "Campo inválido. No debe contener símbolos ni letras.";
             stateStreetnumber = false;
         } else if (/[A-Za-z]/.test(valueStreetnumber)) {
-            // El campo contiene solo letras
-            failedIconStreetnumber.classList.remove('hiddenElement');
-            correctIconStreetnumber.classList.add('hiddenElement');
+            hiddenElement(correctIconStreetnumber);
+            showElement(failedIconStreetnumber);
             tooltipErrorStreetnumber.textContent = "Campo inválido. No debe contener letras.";
             stateStreetnumber = false;
         } else if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueStreetnumber)) {
-            // El campo contiene símbolos
-            failedIconStreetnumber.classList.remove('hiddenElement');
-            correctIconStreetnumber.classList.add('hiddenElement');
+            hiddenElement(correctIconStreetnumber);
+            showElement(failedIconStreetnumber);
             tooltipErrorStreetnumber.textContent = "Campo inválido. No puede contener símbolos.";
             stateStreetnumber = false;
         }  else if (/^[0-9]+$/.test(valueStreetnumber) && (valueStreetnumber.length === 3)) {
-            failedIconStreetnumber.classList.add('hiddenElement');
-            correctIconStreetnumber.classList.remove('hiddenElement');
-            tooltipErrorStreetnumber.textContent = ""; // Borra el mensaje de error al ser válido
+            showElement(correctIconStreetnumber);
+            hiddenElement(failedIconStreetnumber);
+            tooltipErrorStreetnumber.textContent = ""; 
             stateStreetnumber = true;
             validarCoordenadas();
         } else {
-            failedIconStreetnumber.classList.remove('hiddenElement');
-            correctIconStreetnumber.classList.add('hiddenElement');
+            hiddenElement(correctIconStreetnumber);
+            showElement(failedIconStreetnumber);
             tooltipErrorStreetnumber.textContent = "Campo inválido. No pueden introducir más de 3 dígitos.";
             stateStreetnumber = false;
         }
@@ -880,105 +735,134 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inputEmail.addEventListener('focus', () => {
         if (!stateEmail) {
-            failedIconEmail.classList.remove('hiddenElement');
-            correctIconEmail.classList.add('hiddenElement');
+            showElement(failedIconEmail);
+            hiddenElement(correctIconEmail);
         } else {
-            failedIconEmail.classList.add('hiddenElement');
-            correctIconEmail.classList.remove('hiddenElement');
+            hiddenElement(failedIconEmail);
+            showElement(correctIconEmail);
         }
     });
     inputEmail.addEventListener('input', () => {
         const valueEmail = inputEmail.value.trim();
         const emailRegex = /^[a-zA-Z0-9._\-!#&~\u00C0-\u017F]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
+    
         if (valueEmail === '') {
-            failedIconEmail.classList.remove('hiddenElement');
-            correctIconEmail.classList.add('hiddenElement');
+            hiddenElement(correctIconEmail);
+            showElement(failedIconEmail);
             tooltipErrorEmail.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateEmail = false;
         } else if (emailRegex.test(valueEmail)) {
-            failedIconEmail.classList.add('hiddenElement');
-            correctIconEmail.classList.remove('hiddenElement');
+            showElement(correctIconEmail);
+            hiddenElement(failedIconEmail);
             tooltipErrorEmail.textContent = ""; 
             stateEmail = true;
         } else {
-            failedIconEmail.classList.remove('hiddenElement');
-            correctIconEmail.classList.add('hiddenElement');
+            hiddenElement(correctIconEmail);
+            showElement(failedIconEmail);
             tooltipErrorEmail.textContent = "Campo inválido. Dirección de correo electrónico inválida.";
             stateEmail = false;
         }
         checkState4();
     });
+    
+    function btnDisabled(...elements) {
+        elements.forEach((element) => {
+            element.classList.add("btnDisabled");
+        });
+    }
+    
+    function btnEnabled(...elements) {
+        elements.forEach((element) => {
+            element.classList.remove("btnDisabled");
+        });
+    }
 
     inputConfirmemail.addEventListener('focus', () => {
         if (stateEmail) {
-            inputConfirmemail.classList.remove('btnDisabled');
+            btnEnabled(inputConfirmemail);
         } else {
-            inputConfirmemail.classList.add('btnDisabled');
+            btnDisabled(inputConfirmemail);
         }
     });
+    
     inputConfirmemail.addEventListener('mouseenter', () => {
         if (stateEmail) {
-            inputConfirmemail.classList.remove('btnDisabled');
+            btnEnabled(inputConfirmemail);
         } else {
-            inputConfirmemail.classList.add('btnDisabled');
+            btnDisabled(inputConfirmemail);
         }
     });
 
-    inputConfirmemail.addEventListener('click', () => {
-        if (stateEmail) {
+    var code = "";
+    function generarCodigo() {
+        var chars = "0123456789";
+        var codeLength = 5;
+        code = "";
+
+        for (var i = 0; i < codeLength; i++) {
+            var randomNumber = Math.floor(Math.random() * chars.length);
+            code += chars.substring(randomNumber, randomNumber + 1);
+        }
+        console.log(code);
+    }
+    function enviarCodigoPorCorreo() {
+        return new Promise((resolve, reject) => {
+            if (!code) {
+                // Si el cod no se ha generado, genera uno
+                generarCodigo();
+            }
+
             (function() {
                 emailjs.init("ZMo33kR_cmvd-2_zv");
             })();
-    
+            
             var serviceID = "service_v1mglzi";
             var templateID = "template_t0rgu5p";
-    
-            const confirmemail = document.getElementById("confirmemail");
-            var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHJKMNOPQRSTUVWXYZ";
-            var codeLength = 5;
-            var code = "";
-            for (var i = 0; i <= codeLength; i++) {
-                var randomNumber = Math.floor(Math.random() * chars.length);
-                code += chars.substring(randomNumber, randomNumber +1);
-            }
-            console.log(code);
-    
-            // var params = {
-            //     sendername: document.querySelector("#name").value,
-            //     senderemail: document.querySelector("#email").value,
-            //     subject: document.querySelector("#subject").value,
-            //     message: document.querySelector("#message").value
-            // };
+
             var params = {
                 sendername: "SISTEMA ESCOLAR DEL INSTITUTO PRIVADO DEAN FUNES",
                 senderemail: document.querySelector("#email").value,
                 subject: "Código de autenticación",
                 message: code
             };
-            emailjs.send(serviceID, templateID, params)
-            .then( res => {
-                // alert("Thank you, " + params["sendername"] + "! Enviamos tu mensajee")
-                // var userInput = prompt("Por favor, ingresa el código:");
-                var userEmail = document.querySelector("#email").value;
 
-                document.querySelector("#email-sender").textContent = userEmail;
-                document.querySelector(".contentModal").classList.remove("hiddenElement");
+            emailjs.send(serviceID, templateID, params)
+                .then(res => {
+                    resolve(); // Resuelve la promesa una vez que se complete el envío
+                })
+                .catch(error => {
+                    reject(error); // Rechaza la promesa en caso de error
+                });
+        });
+    }
+
+    inputConfirmemail.addEventListener('click', () => {
+        if (stateEmail) {
+            enviarCodigoPorCorreo()
+                .then(res => {
+                    var userEmail = document.querySelector("#email").value;
+                    document.querySelector("#email-sender").textContent = userEmail;
+                    showElement(document.querySelector(".contentModal"));
+                })
+                .catch();
+
                 const modalPopupBtns = document.getElementsByClassName("modalPopupBtn");
-                
+                const resendBtn = document.querySelector(".resend-btn");
                 const acceptBtns = document.getElementsByClassName("accept-btn");
                 MostrarBackgroundDesenfocado();
-               
-    
-                // Recorre todos los botones con la clase "modalPopupBtn"
+
+                resendBtn.addEventListener('click', () => {
+                    enviarCodigoPorCorreo();
+                });
+
                 for (const modalPopupBtn of modalPopupBtns) {
                     modalPopupBtn.addEventListener('click', () => {
                         const userInput = document.getElementById("inputCode").value;
                         const confirmEmailElement = document.querySelector(".confirmemail");
-    
+
                         if (userInput === code) {
                             OcultarBackgroundDesenfocado();
-                            document.querySelector(".contentModal").classList.add("hiddenElement");
+                            hiddenElement(document.querySelector(".contentModal"));
                             document.querySelector(".confirmemail").style.backgroundColor = "#52ec61";
                             confirmEmailElement.addEventListener("mouseenter", function() {
                                 this.style.cursor = "not-allowed";
@@ -986,34 +870,30 @@ document.addEventListener("DOMContentLoaded", function () {
                                 this.style.color = "#fff";
                             });
                             confirmEmailElement.addEventListener("mouseleave", function() {
-                                this.style.cursor = "default"; // Cambia el cursor de nuevo al cursor predeterminado al salir del elemento
+                                this.style.cursor = "default";
                             });
                         } else {
                             OcultarBackgroundDesenfocado();
-                            document.querySelector(".contentModal").classList.add("hiddenElement");
-                         }   
+                            hiddenElement(document.querySelector(".contentModal"));
+                        }
                     });
                 }
                 for (const acceptBtn of acceptBtns) {
                     acceptBtn.addEventListener('click', () => {
                         const userInput = document.getElementById("inputCode").value;
                         if (userInput === code) {
-                            document.querySelector(".email-confirm").classList.add("hiddenElement");
-                            document.querySelector(".email-checked").classList.remove("hiddenElement");
+                            hiddenElement(document.querySelector(".email-confirm"));
+                            showElement(document.querySelector(".email-checked"));
                             stateConfirmemail = true;
                         } else {
-                           alert("El código ingresado no es válido. Inténtalo de nuevo."); // Alerta si el código no coincide.
-                           stateConfirmemail = false;
+                            alert("El código ingresado no es válido. Inténtalo de nuevo.");
+                            stateConfirmemail = false;
                         }
-                    }); 
+                    });
                 }
-                   
-                
-            })
-            .catch();
             checkState4();
         } else {
-            inputConfirmemail.classList.add('btnDisabled');
+            btnDisabled(inputConfirmemail);
             stateConfirmemail = false;
             checkState4();
         }
@@ -1021,53 +901,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inputMatricula.addEventListener('focus', () => {
         if (!stateMatricula) {
-            failedIconMatricula.classList.remove('hiddenElement');
-            correctIconMatricula.classList.add('hiddenElement');
+            showElement(failedIconMatricula);
+            hiddenElement(correctIconMatricula);
         } else {
-            failedIconMatricula.classList.add('hiddenElement');
-            correctIconMatricula.classList.remove('hiddenElement');
+            hiddenElement(failedIconMatricula);
+            showElement(correctIconMatricula);
         }
     });
     inputMatricula.addEventListener('input', () => {
         const valueMatricula = inputMatricula.value.trim();
-        
+    
         if (valueMatricula === '') {
-            failedIconMatricula.classList.remove('hiddenElement');
-            correctIconMatricula.classList.add('hiddenElement');
+            showElement(failedIconMatricula);
+            hiddenElement(correctIconMatricula);
             tooltipErrorMatricula.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateMatricula = false;
         } else if ((/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueMatricula)) && (/[A-Za-z]/.test(valueMatricula))) {
-            // El campo contiene símbolos y letras juntas
-            failedIconMatricula.classList.remove('hiddenElement');
-            correctIconMatricula.classList.add('hiddenElement');
+            showElement(failedIconMatricula);
+            hiddenElement(correctIconMatricula);
             tooltipErrorMatricula.textContent = "Campo inválido. No debe contener símbolos ni letras.";
             stateMatricula = false;
         } else if (/[A-Za-z]/.test(valueMatricula)) {
-            // El campo contiene solo letras
-            failedIconMatricula.classList.remove('hiddenElement');
-            correctIconMatricula.classList.add('hiddenElement');
+            showElement(failedIconMatricula);
+            hiddenElement(correctIconMatricula);
             tooltipErrorMatricula.textContent = "Campo inválido. No debe contener letras.";
             stateMatricula = false;
         } else if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(valueMatricula)) {
-            // El campo contiene símbolos
-            failedIconMatricula.classList.remove('hiddenElement');
-            correctIconMatricula.classList.add('hiddenElement');
+            showElement(failedIconMatricula);
+            hiddenElement(correctIconMatricula);
             tooltipErrorMatricula.textContent = "Campo inválido. No puede contener símbolos.";
             stateMatricula = false;
-        }  else if (/^[0-9]+$/.test(valueMatricula) && (valueMatricula.length === 4)) {
-            // El campo contiene solo números y está en el rango de 7 u 8 dígitos
-            failedIconMatricula.classList.add('hiddenElement');
-            correctIconMatricula.classList.remove('hiddenElement');
-            tooltipErrorMatricula.textContent = ""; 
+        } else if (/^[0-9]+$/.test(valueMatricula) && (valueMatricula.length === 4)) {
+            hiddenElement(failedIconMatricula);
+            showElement(correctIconMatricula);
+            tooltipErrorMatricula.textContent = "";
             stateMatricula = true;
         } else if (/^[0-9]+$/.test(valueMatricula) && (valueMatricula.length < 4)) {
-            failedIconMatricula.classList.remove('hiddenElement');
-            correctIconMatricula.classList.add('hiddenElement');
+            showElement(failedIconMatricula);
+            hiddenElement(correctIconMatricula);
             tooltipErrorMatricula.textContent = "Campo inválido. No pueden introducir menos de 4 dígitos.";
             stateMatricula = false;
         } else {
-            failedIconMatricula.classList.remove('hiddenElement');
-            correctIconMatricula.classList.add('hiddenElement');
+            showElement(failedIconMatricula);
+            hiddenElement(correctIconMatricula);
             tooltipErrorMatricula.textContent = "Campo inválido. No pueden introducir más de 4 dígitos.";
             stateMatricula = false;
         }
@@ -1076,97 +952,95 @@ document.addEventListener("DOMContentLoaded", function () {
 
     selectTypeuser.addEventListener('focus', () => {
         if (!stateTypeuser) {
-            failedIconTypeuser.classList.remove('hiddenElement');
-            correctIconTypeuser.classList.add('hiddenElement');
+            showElement(failedIconTypeuser);
+            hiddenElement(correctIconTypeuser);
         } else {
-            failedIconTypeuser.classList.add('hiddenElement');
-            correctIconTypeuser.classList.remove('hiddenElement');
+            hiddenElement(failedIconTypeuser);
+            showElement(correctIconTypeuser);
         }
     });
-
     selectTypeuser.addEventListener('input', () => {
         const selectedValueTypeuser = selectTypeuser.value;
     
         if (selectedValueTypeuser === '') {
-            failedIconTypeuser.classList.remove('hiddenElement');
-            correctIconTypeuser.classList.add('hiddenElement');
+            showElement(failedIconTypeuser);
+            hiddenElement(correctIconTypeuser);
             tooltipErrorTypeuser.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateTypeuser = false;
         } else if (selectedValueTypeuser != '') {
-            failedIconTypeuser.classList.add('hiddenElement');
-            correctIconTypeuser.classList.remove('hiddenElement');
+            hiddenElement(failedIconTypeuser);
+            showElement(correctIconTypeuser);
             stateTypeuser = true;
         }
         checkState4();
     });
-
+    
     inputPassword.addEventListener('focus', () => {
         if (!statePassword) {
-            failedIconPassword.classList.remove('hiddenElement');
-            correctIconPassword.classList.add('hiddenElement');
+            showElement(failedIconPassword);
+            hiddenElement(correctIconPassword);
         } else {
-            failedIconPassword.classList.add('hiddenElement');
-            correctIconPassword.classList.remove('hiddenElement');
+            hiddenElement(failedIconPassword);
+            showElement(correctIconPassword);
         }
     });
     inputPassword.addEventListener('input', () => {
         const valuePassword = inputPassword.value.trim();
         
         if (valuePassword === '') {
-            failedIconPassword.classList.remove('hiddenElement');
-            correctIconPassword.classList.add('hiddenElement');
+            showElement(failedIconPassword);
+            hiddenElement(correctIconPassword);
             tooltipErrorPassword.textContent = "Campo inválido. No puede dejar el campo vacío.";
             statePassword = false;
         } else if (/\s/.test(valuePassword)) {
-            failedIconPassword.classList.remove('hiddenElement');
-            correctIconPassword.classList.add('hiddenElement');
+            showElement(failedIconPassword);
+            hiddenElement(correctIconPassword);
             tooltipErrorPassword.textContent = "Campo inválido. No puede contener espacios en blanco.";
             statePassword = false;
-        } else if ((valuePassword.length >= 8) && (valuePassword.length <= 12)) {
-            failedIconPassword.classList.add('hiddenElement');
-            correctIconPassword.classList.remove('hiddenElement');
+        } else if (valuePassword.length >= 8 && valuePassword.length <= 12) {
+            hiddenElement(failedIconPassword);
+            showElement(correctIconPassword);
             tooltipErrorPassword.textContent = ""; 
             statePassword = true;
         } else if (valuePassword.length < 8) {
-            failedIconPassword.classList.remove('hiddenElement');
-            correctIconPassword.classList.add('hiddenElement');
+            showElement(failedIconPassword);
+            hiddenElement(correctIconPassword);
             tooltipErrorPassword.textContent = "Campo inválido. No pueden introducir menos de 8 dígitos.";
             statePassword = false;
         } else {
-            failedIconPassword.classList.remove('hiddenElement');
-            correctIconPassword.classList.add('hiddenElement');
+            showElement(failedIconPassword);
+            hiddenElement(correctIconPassword);
             tooltipErrorPassword.textContent = "Campo inválido. No pueden introducir más de 12 dígitos.";
             statePassword = false;
         }
         checkState4();
     });
-
-
+    
     inputConfirmpassword.addEventListener('focus', () => {
         if (!stateConfirmpassword) {
-            failedIconConfirmpassword.classList.remove('hiddenElement');
-            correctIconConfirmpassword.classList.add('hiddenElement');
+            showElement(failedIconConfirmpassword);
+            hiddenElement(correctIconConfirmpassword);
         } else {
-            failedIconConfirmpassword.classList.add('hiddenElement');
-            correctIconConfirmpassword.classList.remove('hiddenElement');
+            hiddenElement(failedIconConfirmpassword);
+            showElement(correctIconConfirmpassword);
         }
     });
     inputConfirmpassword.addEventListener('input', () => {
         const valueConfirmpassword = inputConfirmpassword.value.trim();
         
         if (valueConfirmpassword === '') {
-            failedIconConfirmpassword.classList.remove('hiddenElement');
-            correctIconConfirmpassword.classList.add('hiddenElement');
+            showElement(failedIconConfirmpassword);
+            hiddenElement(correctIconConfirmpassword);
             tooltipErrorConfirmpassword.textContent = "Campo inválido. No puede dejar el campo vacío.";
             stateConfirmpassword = false;
-        } else if ((statePassword) && (inputPassword.value === valueConfirmpassword)) {
-            failedIconConfirmpassword.classList.add('hiddenElement');
-            correctIconConfirmpassword.classList.remove('hiddenElement');
+        } else if (statePassword && inputPassword.value === valueConfirmpassword) {
+            hiddenElement(failedIconConfirmpassword);
+            showElement(correctIconConfirmpassword);
             tooltipErrorConfirmpassword.textContent = ""; 
             stateConfirmpassword = true;
         } else {
-            failedIconConfirmpassword.classList.remove('hiddenElement');
-            correctIconConfirmpassword.classList.add('hiddenElement');
+            showElement(failedIconConfirmpassword);
+            hiddenElement(correctIconConfirmpassword);
             tooltipErrorConfirmpassword.textContent = "Campo inválido. Las contraseñas no coinciden.";
             stateConfirmpassword = false;
         }
@@ -1182,112 +1056,107 @@ document.addEventListener("DOMContentLoaded", function () {
         checkState6();
     });
 
-   
-
     document.getElementById('browse_button').addEventListener('click', function() {
-    // Simular un clic en el input tipo file oculto
-    document.getElementById('browse_image').click();
-});
-
-var checkUserImage = false;
-
-document.getElementById('browse_image').addEventListener('change', function(e) {
-    var files = e.target.files;
-
-    var done = function(url) {
-        $('#display_image_div').html('');
-        $("#display_image_div").html('<img name="display_image_data" id="display_image_data" src="' + url + '" alt="Uploaded Picture">');
-    };
-
-    if (files && files.length > 0) {
-    file = files[0];
-
-    if (URL) {
-        done(URL.createObjectURL(file));
-    } else if (FileReader) {
-        reader = new FileReader();
-        reader.onload = function(e) {
-            done(reader.result);
-        };
-        reader.readAsDataURL(file);
-    }
-
-    var image = document.getElementById('display_image_data');
-    image.style.width = '288px'; 
-    image.style.height = '200px'; 
-    
-    
-
-    var button = document.getElementById('crop_button');
-    var result = document.getElementById('cropped_image_result');
-    var croppable = false;
-    var cropper = new Cropper(image, {
-        aspectRatio: 1,
-        viewMode: 1,
-        ready: function() {
-            croppable = true;
-        },
+        document.getElementById('browse_image').click();
     });
 
-    button.onclick = function() {
-        var croppedCanvas;
-        var roundedCanvas;
-        var roundedImage;
+    var checkUserImage = false;
 
-        if (!croppable) {
-            return;
-        }
+    document.getElementById('browse_image').addEventListener('change', function(e) {
+        var files = e.target.files;
 
-        // Crop
-        croppedCanvas = cropper.getCroppedCanvas();
-
-        // Round
-        roundedCanvas = getRoundedCanvas(croppedCanvas);
-
-        // Show
-        roundedImage = document.createElement('img');
-        roundedImage.classList.add("roundedImage");
-        roundedImage.src = roundedCanvas.toDataURL();
-        roundedImage.style.width = '150px'; // Establece el ancho en 200px
-        roundedImage.style.height = '150px'; // Establece la altura en 200px
-
-        result.innerHTML = '';
-        result.appendChild(roundedImage);
-
-        if (document.querySelector('.roundedImage')) {
-            checkUserImage = true;
-            console.log('El usuario ha recortado una imagen.');
-        } else {
-            checkUserImage = false;
-            console.log('El usuario no ha recortado una imagen aún.');
-        }
-        console.log(checkUserImage);
-        checkState5();
+        var done = function(url) {
+            $('#display_image_div').html('');
+            $("#display_image_div").html('<img name="display_image_data" id="display_image_data" src="' + url + '" alt="Uploaded Picture">');
         };
-        function getRoundedCanvas(sourceCanvas) {
-          var canvas = document.createElement('canvas');
-          var context = canvas.getContext('2d');
-          var width = sourceCanvas.width;
-          var height = sourceCanvas.height;
 
-          canvas.width = width;
-          canvas.height = height;
-          context.imageSmoothingEnabled = true;
-          context.drawImage(sourceCanvas, 0, 0, width, height);
-          context.globalCompositeOperation = 'destination-in';
-          context.beginPath();
-          context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
-          context.fill();
-          return canvas;
-         
+        if (files && files.length > 0) {
+        file = files[0];
+
+        if (URL) {
+            done(URL.createObjectURL(file));
+        } else if (FileReader) {
+            reader = new FileReader();
+            reader.onload = function(e) {
+                done(reader.result);
+            };
+            reader.readAsDataURL(file);
         }
-   
+
+        var image = document.getElementById('display_image_data');
+        image.style.width = '288px'; 
+        image.style.height = '200px'; 
         
-    }
+        
 
-});
+        var button = document.getElementById('crop_button');
+        var result = document.getElementById('cropped_image_result');
+        var croppable = false;
+        var cropper = new Cropper(image, {
+            aspectRatio: 1,
+            viewMode: 1,
+            ready: function() {
+                croppable = true;
+            },
+        });
 
+        button.onclick = function() {
+            var croppedCanvas;
+            var roundedCanvas;
+            var roundedImage;
 
+            if (!croppable) {
+                return;
+            }
+
+            // Crop
+            croppedCanvas = cropper.getCroppedCanvas();
+
+            // Round
+            roundedCanvas = getRoundedCanvas(croppedCanvas);
+
+            // Show
+            roundedImage = document.createElement('img');
+            roundedImage.classList.add("roundedImage");
+            roundedImage.src = roundedCanvas.toDataURL();
+            roundedImage.style.width = '150px'; 
+            roundedImage.style.height = '150px'; 
+
+            result.innerHTML = '';
+            result.appendChild(roundedImage);
+
+            if (document.querySelector('.roundedImage')) {
+                checkUserImage = true;
+                console.log('El usuario ha recortado una imagen.');
+            } else {
+                checkUserImage = false;
+                console.log('El usuario no ha recortado una imagen aún.');
+            }
+            console.log(checkUserImage);
+            checkState5();
+            };
+            function getRoundedCanvas(sourceCanvas) {
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+            var width = sourceCanvas.width;
+            var height = sourceCanvas.height;
+
+            canvas.width = width;
+            canvas.height = height;
+            context.imageSmoothingEnabled = true;
+            context.drawImage(sourceCanvas, 0, 0, width, height);
+            context.globalCompositeOperation = 'destination-in';
+            context.beginPath();
+            context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
+            context.fill();
+            return canvas;
+            
+            }
+    
+            
+        }
+
+    });
 
     const signupContent = document.querySelector(".signup-form-container"),
     stagebtn1a = document.querySelector(".stagebtn1a"),
@@ -1302,270 +1171,221 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
     stagebtn5b = document.querySelector(".stagebtn5b"),
     stagebtn6a = document.querySelector(".stagebtn6a"),
     stagebtn6b = document.querySelector(".stagebtn6b"),
-    
     signupContent1 = document.querySelector(".stage1-content"),
     signupContent2 = document.querySelector(".stage2-content"),
     signupContent3 = document.querySelector(".stage3-content"),
-    signupContent4 = document.querySelector(".stage4-content");
-    signupContent5 = document.querySelector(".stage5-content");
+    signupContent4 = document.querySelector(".stage4-content"),
+    signupContent5 = document.querySelector(".stage5-content"),
     signupContent6 = document.querySelector(".stage6-content");
-    // signupContent2.classList.add("hiddenElement");
-    // signupContent3.classList.add("hiddenElement");
-
+  
     function checkState1() {
         if (stateName === true && stateLastname === true && stateDni === true && statePhone === true && stateDatetime === true && stateGender === true) {
-            stagebtn1b.classList.remove("btnDisabled");
-            nextBtnStage1.classList.remove("btnDisabled");
+            btnEnabled(stagebtn1b, nextBtnStage1);
             return true;
         } else {
-            stagebtn1b.classList.add("btnDisabled");
-            nextBtnStage1.classList.add("btnDisabled");
+            btnDisabled(stagebtn1b, nextBtnStage1);
             return false;
         }
     }
 
-    // && stateLocalidad === true
     function checkState2() {
         if (statePostalcode === true && stateStreet === true && stateStreetnumber === true) {
-            stagebtn2b.classList.remove("btnDisabled");
-            nextBtnStage2.classList.remove("btnDisabled");
+            btnEnabled(stagebtn2b, nextBtnStage2);
             return true;
         } else {
-            stagebtn2b.classList.add("btnDisabled");
-            nextBtnStage2.classList.add("btnDisabled");
+            btnDisabled(stagebtn2b, nextBtnStage2);
             return false;
         }
     }
 
     function checkState4() {
         if (stateEmail === true && stateConfirmemail === true && stateMatricula === true && stateTypeuser === true && statePassword === true && stateConfirmpassword === true) {
-            stagebtn4b.classList.remove("btnDisabled");
-            nextBtnStage4.classList.remove("btnDisabled");
+            btnEnabled(stagebtn4b, nextBtnStage4);
             return true;
         } else {
-            stagebtn4b.classList.add("btnDisabled");
-            nextBtnStage4.classList.add("btnDisabled");
+            btnDisabled(stagebtn4b, nextBtnStage4);
             return false;
         }
     }
 
     function checkState5() {
         if (checkUserImage === true) {
-            stagebtn5b.classList.remove("btnDisabled");
-            nextBtnStage5.classList.remove("btnDisabled");
+            btnEnabled(stagebtn5b, nextBtnStage5);
             return true;
         } else {
-            stagebtn5b.classList.add("btnDisabled");
-            nextBtnStage5.classList.add("btnDisabled");
+            btnDisabled(stagebtn5b, nextBtnStage5);
             return false;
         }
     }
 
     function checkState6() {
-        if (stateCheckboxTc === true) {
-            stagebtn6b.classList.remove("btnDisabled");
-            nextBtnStage6.classList.remove("btnDisabled");
+        if (stateCheckboxTc) {
+            btnEnabled(stagebtn6b, nextBtnStage6);
             return true;
         } else {
-            stagebtn6b.classList.add("btnDisabled");
-            nextBtnStage6.classList.remove("btnDisabled");
+            btnDisabled(stagebtn6b, nextBtnStage6);
             return false;
         }
+    }
+
+    function animateNextStage(stageElement, nextStageElement, nthChildren , tooltipElement, visibleContent) {
+        hiddenElement(signupContent1, signupContent2, signupContent3, signupContent4, signupContent5, signupContent6);
+        showElement(visibleContent);
+
+        setTimeout(() => {
+            stageElement.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            stageElement.style.backgroundColor  = "#52ec61";
+            stageElement.style.color = "#fff";
+            stageElement.innerText = "✔";
+
+            nextStageElement.style.color = "#ae0e30";
+            nextStageElement.style.fontWeight = "bolder";
+            tooltipElement.style.color = "#ae0e30";
+        }, 100);
+
+        if (!Array.isArray(nthChildren)) {
+        nthChildren = [nthChildren];
+        }
+
+        nthChildren.forEach(nthChild => {
+            nthChild.classList.add("green-background");
+        });
+    }
+
+    function animatePrevStage(stageElement, prevStageElement, prevStageValue, nthChild , tooltipElement, visibleContent) {
+        hiddenElement(signupContent1, signupContent2, signupContent3, signupContent4, signupContent5, signupContent6);
+        showElement(visibleContent);
+
+        setTimeout(() => {
+            stageElement.style.color = "#6e6e6e";
+            stageElement.style.fontWeight = "bolder";
+            tooltipElement.style.color = "#6e6e6e";
+
+            prevStageElement.innerText = prevStageValue;
+            prevStageElement.style.backgroundColor = "#e2e2e7";
+            prevStageElement.style.color = "#ae0e30";
+        }, 100);
+        nthChild.classList.remove("green-background");
     }
  
     stagebtn1b.addEventListener('click', () => {
         if (checkState1() === true) {
-            signupContent1.classList.add("hiddenElement");
-            signupContent3.classList.add("hiddenElement");
-            signupContent2.classList.remove("hiddenElement");
-            signupContent4.classList.add("hiddenElement");
-    
-            setTimeout(() => {
-                const stageElement1 = document.querySelector(".stageno-1");
-                stageElement1.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-                stageElement1.style.backgroundColor = "#52ec61";
-                stageElement1.style.color = "#fff";
-                stageElement1.innerText = "✔";
-    
-                document.querySelector(".stageno-2").style.color = "#ae0e30";
-                document.querySelector(".stageno-2").style.fontWeight = "bolder";
-                document.getElementById("tool-tip-2").style.color = "#ae0e30";
-            }, 100);
-            document.querySelector(".stage:nth-child(2)").classList.add("green-background");
+            animateNextStage(
+            document.querySelector(".stageno-1"),
+            document.querySelector(".stageno-2"),
+            document.querySelector(".stage:nth-child(2)"),
+            document.getElementById("tool-tip-2"),
+            signupContent2
+           )
         } else {
             stagebtn1b.classList.add("btnDisabled");
         }
     });
     
     stagebtn2a.addEventListener('click', () => {
-        signupContent1.classList.remove("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.add("hiddenElement");
-
-        setTimeout(() => {
-            document.querySelector(".stageno-1").innerText = "1";
-            document.querySelector(".stageno-1").style.backgroundColor = "#e2e2e7";
-            document.querySelector(".stageno-1").style.color = "#ae0e30";
-
-            document.querySelector(".stageno-2").style.color = "#6e6e6e";
-            document.querySelector(".stageno-2").style.fontWeight = "bolder";
-            document.getElementById("tool-tip-2").style.color = "#6e6e6e";
-        }, 100);
-        document.querySelector(".stage:nth-child(2)").classList.remove("green-background");
+        animatePrevStage(
+            document.querySelector(".stageno-2"),
+            document.querySelector(".stageno-1"),
+            1,
+            document.querySelector(".stage:nth-child(2)"),
+            document.getElementById("tool-tip-2"),
+            signupContent1
+        )
     });
+
     stagebtn2b.addEventListener('click', () => {
         if (checkState2() === true) {
-            signupContent1.classList.add("hiddenElement");
-            signupContent3.classList.remove("hiddenElement");
-            signupContent2.classList.add("hiddenElement");
-            signupContent4.classList.add("hiddenElement");
-    
-            setTimeout(() => {
-                const stageElement2 = document.querySelector(".stageno-2");
-                stageElement2.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-                stageElement2.style.backgroundColor = "#52ec61";
-                stageElement2.style.color = "#fff";
-                stageElement2.innerText = "✔";
-    
-                document.querySelector(".stageno-3").style.color = "#ae0e30";
-                document.querySelector(".stageno-3").style.fontWeight = "bolder";
-                document.getElementById("tool-tip-3").style.color = "#ae0e30";
-            }, 100);
-    
-            document.querySelector(".stage:nth-child(2)").classList.add("green-background");
-            document.querySelector(".stage:nth-child(3)").classList.add("green-background");
+            const nthChild = [
+                document.querySelector(".stage:nth-child(2)"),
+            document.querySelector(".stage:nth-child(3)")
+            ]
+            animateNextStage(
+                document.querySelector(".stageno-2"),
+                document.querySelector(".stageno-3"),
+                nthChild,
+                document.getElementById("tool-tip-3"),
+                signupContent3
+            )
         } else {
             stagebtn2b.classList.add("btnDisabled");
         }
     });
+
     stagebtn3a.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.remove("hiddenElement");
-        signupContent4.classList.add("hiddenElement");
-
-        setTimeout(() => {
-            document.querySelector(".stageno-2").innerText = "2";
-            document.querySelector(".stageno-2").style.backgroundColor = "#e2e2e7";
-            document.querySelector(".stageno-2").style.color = "#ae0e30";
-           
-            document.querySelector(".stageno-3").style.color = "#6e6e6e";
-            document.querySelector(".stageno-3").style.fontWeight = "bolder";
-            document.getElementById("tool-tip-3").style.color = "#6e6e6e";
-        }, 100);
-        document.querySelector(".stage:nth-child(3)").classList.remove("green-background");
+        animatePrevStage(
+            document.querySelector(".stageno-3"),
+            document.querySelector(".stageno-2"),
+            2,
+            document.querySelector(".stage:nth-child(3)"),
+            document.getElementById("tool-tip-3"),
+            signupContent2
+        );
     });
+
     stagebtn3b.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.remove("hiddenElement");
-
-        setTimeout(() => {
-            const stageElement3 = document.querySelector(".stageno-3");
-            stageElement3.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-            stageElement3.style.backgroundColor = "#52ec61";
-            stageElement3.style.color = "#fff";
-            stageElement3.innerText = "✔";
-
-            document.querySelector(".stageno-4").style.color = "#ae0e30";
-            document.querySelector(".stageno-4").style.fontWeight = "bolder";
-            document.getElementById("tool-tip-4").style.color = "#ae0e30";
-        }, 100);
-
-        document.querySelector(".stage:nth-child(4)").classList.add("green-background");
-
-        
+        // if (checkState3() === true) {
+            animateNextStage(
+                document.querySelector(".stageno-3"),
+                document.querySelector(".stageno-4"),
+                document.querySelector(".stage:nth-child(4)"),
+                document.getElementById("tool-tip-4"),
+                signupContent4
+            );
+        // } else {
+        //     stagebtn3b.classList.add("btnDisabled");
+        // }
     });
+
     stagebtn4a.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.remove("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.add("hiddenElement");
-
-        setTimeout(() => {
-            document.querySelector(".stageno-3").innerText = "3";
-            document.querySelector(".stageno-3").style.backgroundColor = "#e2e2e7";
-            document.querySelector(".stageno-3").style.color = "#ae0e30";
-
-            document.querySelector(".stageno-4").style.color = "#6e6e6e";
-            document.querySelector(".stageno-4").style.fontWeight = "bolder";
-            document.getElementById("tool-tip-4").style.color = "#6e6e6e";
-        }, 100);
-        document.querySelector(".stage:nth-child(4)").classList.remove("green-background");
+        animatePrevStage(
+            document.querySelector(".stageno-4"),
+            document.querySelector(".stageno-3"),
+            3,
+            document.querySelector(".stage:nth-child(4)"),
+            document.getElementById("tool-tip-4"),
+            signupContent3
+        );
     });
+
     stagebtn4b.addEventListener('click', () => {
         if (checkState4() === true) {
-            signupContent1.classList.add("hiddenElement");
-            signupContent3.classList.add("hiddenElement");
-            signupContent2.classList.add("hiddenElement");
-            signupContent4.classList.add("hiddenElement");
-            signupContent5.classList.remove("hiddenElement");
-
-            setTimeout(() => {
-                const stageElement4 = document.querySelector(".stageno-4");
-                stageElement4.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-                stageElement4.style.backgroundColor = "#52ec61";
-                stageElement4.style.color = "#fff";
-                stageElement4.innerText = "✔";
-
-                document.querySelector(".stageno-5").style.color = "#ae0e30";
-                document.querySelector(".stageno-5").style.fontWeight = "bolder";
-                document.getElementById("tool-tip-5").style.color = "#ae0e30";
-            }, 100);
-
-            document.querySelector(".stage:nth-child(5)").classList.add("green-background");
+            const nthChild = [
+                document.querySelector(".stage:nth-child(5)")
+            ]
+            animateNextStage(
+                document.querySelector(".stageno-4"),
+                document.querySelector(".stageno-5"),
+                nthChild,
+                document.getElementById("tool-tip-5"),
+                signupContent5
+            )
         } else {
             stagebtn4b.classList.add("btnDisabled");
         }
-       
     });
 
     stagebtn5a.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.remove("hiddenElement");
-        signupContent5.classList.add("hiddenElement");
-        signupContent6.classList.add("hiddenElement");
-
-        setTimeout(() => {
-            document.querySelector(".stageno-4").innerText = "4";
-            document.querySelector(".stageno-4").style.backgroundColor = "#e2e2e7";
-            document.querySelector(".stageno-4").style.color = "#ae0e30";
-            
-            document.querySelector(".stageno-5").style.color = "#6e6e6e";
-            document.querySelector(".stageno-5").style.fontWeight = "bolder";
-            document.getElementById("tool-tip-5").style.color = "#6e6e6e";
-        }, 100);
-        document.querySelector(".stage:nth-child(5)").classList.remove("green-background");
-        
-        
+        animatePrevStage(
+            document.querySelector(".stageno-5"),
+            document.querySelector(".stageno-4"),
+            4,
+            document.querySelector(".stage:nth-child(5)"),
+            document.getElementById("tool-tip-5"),
+            signupContent4
+        );
     });
     stagebtn5b.addEventListener('click', () => {
         if (checkState5() === true) {
-            signupContent1.classList.add("hiddenElement");
-            signupContent3.classList.add("hiddenElement");
-            signupContent2.classList.add("hiddenElement");
-            signupContent4.classList.add("hiddenElement");
-            signupContent5.classList.add("hiddenElement");
-            signupContent6.classList.remove("hiddenElement");
-
-            setTimeout(() => {
-                const stageElement5 = document.querySelector(".stageno-5");
-                stageElement5.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-                stageElement5.style.backgroundColor = "#52ec61";
-                stageElement5.style.color = "#fff";
-                stageElement5.innerText = "✔";
-
-                document.querySelector(".stageno-6").style.color = "#ae0e30";
-                document.querySelector(".stageno-6").style.fontWeight = "bolder";
-                document.getElementById("tool-tip-6").style.color = "#ae0e30";
-            }, 100);
-
-            document.querySelector(".stage:nth-child(6)").classList.add("green-background");
-            
+            const nthChild = [
+                document.querySelector(".stage:nth-child(6)")
+            ]
+            animateNextStage(
+                document.querySelector(".stageno-5"),
+                document.querySelector(".stageno-6"),
+                nthChild,
+                document.getElementById("tool-tip-6"),
+                signupContent6
+            )
         } else {
             stagebtn5b.classList.add("btnDisabled");
         }
@@ -1573,47 +1393,47 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
 
 
     stagebtn6a.addEventListener('click', () => {
-        signupContent1.classList.add("hiddenElement");
-        signupContent3.classList.add("hiddenElement");
-        signupContent2.classList.add("hiddenElement");
-        signupContent4.classList.add("hiddenElement");
-        signupContent5.classList.remove("hiddenElement");
-        signupContent6.classList.add("hiddenElement");
-
-        setTimeout(() => {
-            document.querySelector(".stageno-5").innerText = "5";
-            document.querySelector(".stageno-5").style.backgroundColor = "#e2e2e7";
-            document.querySelector(".stageno-5").style.color = "#ae0e30";
-            
-            document.querySelector(".stageno-6").style.color = "#6e6e6e";
-            document.querySelector(".stageno-6").style.fontWeight = "bolder";
-            document.getElementById("tool-tip-6").style.color = "#6e6e6e";
-        }, 100);
-        document.querySelector(".stage:nth-child(6)").classList.remove("green-background");
-        
-        
+        animatePrevStage(
+            document.querySelector(".stageno-6"),
+            document.querySelector(".stageno-5"),
+            5,
+            document.querySelector(".stage:nth-child(6)"),
+            document.getElementById("tool-tip-6"),
+            signupContent5
+        );
     });
     stagebtn6b.addEventListener('click', () => {
         if (checkState6() === true) {
-            signupContent1.classList.add("hiddenElement");
-            signupContent3.classList.add("hiddenElement");
-            signupContent2.classList.add("hiddenElement");
-            signupContent4.classList.add("hiddenElement");
-            signupContent5.classList.add("hiddenElement");
-            signupContent6.classList.add("hiddenElement");
+            const nthChild = [
+               
+            ]
+            animateNextStage(
+                document.querySelector(".stageno-6"),
+                document.querySelector(""),
+                nthChild,
+                document.getElementById(""),
+                ""
+            )
 
-            setTimeout(() => {
-                const stageElement6 = document.querySelector(".stageno-6");
-                stageElement6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
-                stageElement6.style.backgroundColor = "#52ec61";
-                stageElement6.style.color = "#fff";
-                stageElement6.innerText = "✔";
-            }, 100);
+            // signupContent1.classList.add("hiddenElement");
+            // signupContent3.classList.add("hiddenElement");
+            // signupContent2.classList.add("hiddenElement");
+            // signupContent4.classList.add("hiddenElement");
+            // signupContent5.classList.add("hiddenElement");
+            // signupContent6.classList.add("hiddenElement");
+
+            // setTimeout(() => {
+            //     const stageElement6 = document.querySelector(".stageno-6");
+            //     stageElement6.style.transition = "background-color 1s ease-in-out, color 1s ease-in-out";
+            //     stageElement6.style.backgroundColor = "#52ec61";
+            //     stageElement6.style.color = "#fff";
+            //     stageElement6.innerText = "✔";
+            // }, 100);
 
             const popUpAnimationContent = document.getElementsByClassName("popupAnimation");
 
             if (popUpAnimationContent.length > 0) {
-                const firstPopUpAnimation = popUpAnimationContent[0]; // Tomamos el primer elemento
+                const firstPopUpAnimation = popUpAnimationContent[0]; 
 
                 const imgElement = firstPopUpAnimation.querySelector('img');
                 imgElement.src = '/assets/Login/sucessPopup.png';
@@ -1639,8 +1459,6 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         }
     });
 
-   
-    
     function LocalidadValue(valueCP) {
         const elementInputLocalidad = document.getElementById("localidad");
         console.log(valueCP);
@@ -1648,42 +1466,38 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         fetch(URL_CP)
             .then((Response) => Response.json())
             .then((Data) => {
-                elementInputLocalidad.innerHTML = ""; // Limpiar el select antes de agregar opciones
+                elementInputLocalidad.innerHTML = ""; 
                 const selectOption = document.createElement("option");
-                selectOption.value = ""; // Puedes asignar un valor vacío o algún valor predeterminado si es necesario
+                selectOption.value = ""; 
                 selectOption.textContent = "Seleccionar";
                 selectOption.disabled = true;
                 selectOption.selected = true;
                 elementInputLocalidad.appendChild(selectOption);
                 console.log("si respondio");
                 if (Data.length === 0) {
-                    // Manejar el caso en que no se encuentren datos
                 } else {
-                    // Filtrar las localidades por código postal
                     const filteredData = Data.filter((item) => item.CP === parseInt(valueCP));
                     console.log(filteredData);
                     if (filteredData.length === 0) {
                         console.log("filtreddata esta vacio");
-                        failedIconPostalcode.classList.remove('hiddenElement');
-                        correctIconPostalcode.classList.add('hiddenElement');
+                        showElement(failedIconPostalcode);
+                        hiddenElement(correctIconPostalcode)
                         tooltipErrorPostalcode.textContent = "Campo inválido. No existe el código postal.";
                         statePostalcode = false;
 
-                        failedIconLocalidad.classList.remove('hiddenElement');
-                        correctIconLocalidad.classList.add('hiddenElement');
+                        showElement(failedIconLocalidad)
+                        hiddenElement(correctIconLocalidad)
                         tooltipErrorLocalidad.textContent = "Campo inválido. No existe localidad para el código postal.";
                         stateLocalidad = false;
-                        // Manejar el caso en que no se encuentren localidades para el código postal seleccionado
                     } else {
-                        // Iterar a través de los datos filtrados y agregar opciones al select
                         filteredData.forEach((item) => {
-                            failedIconLocalidad.classList.add('hiddenElement');
-                            correctIconLocalidad.classList.add('hiddenElement');
+                            hiddenElement(failedIconLocalidad, correctIconLocalidad)
+
                             tooltipErrorLocalidad.textContent = "Campo inválido. No puede dejar el campo vacío.";
-                            const option = document.createElement("option"); // Crear un elemento opción
-                            option.value = item.Localidad; // Asignar el valor de la localidad
-                            option.textContent = item.Localidad; // Asignar el texto de la localidad
-                            elementInputLocalidad.appendChild(option); // Agregar la opción al select
+                            const option = document.createElement("option"); 
+                            option.value = item.Localidad; 
+                            option.textContent = item.Localidad; 
+                            elementInputLocalidad.appendChild(option);
                             console.log(valueCP);
                             console.log(filteredData);
                         });
@@ -1695,7 +1509,7 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
             });
     }
 
-    let map; // Declara una variable global para el mapa
+    let map; 
 
     function validarCoordenadas() {
         if (stateLocalidad && statePostalcode && stateStreet && stateStreetnumber) {
@@ -1718,16 +1532,14 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                const coordenadas = data.results[0].geometry; // Suponiendo que las coordenadas estén en el primer resultado
+                const coordenadas = data.results[0].geometry; 
                 console.log("Coordenadas: ", coordenadas);
     
                 if (coordenadas) {
-                    // Elimina el mapa anterior si existe
                     if (map) {
                         map.remove();
                     }
     
-                    // Crea un nuevo mapa
                     crearMapa(coordenadas);
                 } else {
                     console.error("No se pudieron obtener las coordenadas.");
@@ -1761,78 +1573,66 @@ document.getElementById('browse_image').addEventListener('change', function(e) {
         // }
     }
    
-    
-    
     btnSlideMenu.addEventListener('click', () => {
         if (!btnSlideMenu.classList.contains("is-active")) {
-            btnSlideMenu.classList.add("is-active");
-            // toggleSlideMenu.style.backgroundColor = 'rgba(174, 14, 48, 0.6)';
-            // toggleSlideMenu.style.backdropFilter = 'blur(2px)';
+            IsActiveElement(btnSlideMenu, "yes");
             toggleSlideMenu.style.backgroundColor = "rgba(174, 14, 48)";
-            containerSlideMenu.classList.remove('hiddenElement');
+            showElement(containerSlideMenu)
         } else {
-            btnSlideMenu.classList.remove("is-active");
-            containerSlideMenu.classList.add('hiddenElement');
+            IsActiveElement(btnSlideMenu, "no");
+            hiddenElement(containerSlideMenu)
             toggleSlideMenu.style.background = 'none';
             toggleSlideMenu.style.backdropFilter = 'none';
         }
     });
     
+    const paginationBtnsMobile = document.querySelector(".pagination-btns-mobile"),
+    cointanerStageMobile = document.querySelector(".cointaner-stage-mobile"),
+    stageBtns1 = paginationBtnsMobile.querySelector(".stage-btns-1"),
+    prevBtnStage1 = paginationBtnsMobile.querySelector(".stagebtn1a"),
+    nextBtnStage1 = paginationBtnsMobile.querySelector(".stagebtn1b");
+
+    const stageBtns2 = paginationBtnsMobile.querySelector(".stage-btns-2"),
+    prevBtnStage2 = paginationBtnsMobile.querySelector(".stagebtn2a"),
+    nextBtnStage2 = paginationBtnsMobile.querySelector(".stagebtn2b");
     
-    // btnSlideMenu.classList.toggle("is-active");
-    const paginationBtnsMobile = document.querySelector(".pagination-btns-mobile");
-    const cointanerStageMobile = document.querySelector(".cointaner-stage-mobile");
+    const stageBtns3 = paginationBtnsMobile.querySelector(".stage-btns-3"),
+    prevBtnStage3 = paginationBtnsMobile.querySelector(".stagebtn3a"),
+    nextBtnStage3 = paginationBtnsMobile.querySelector(".stagebtn3b");
+
+    const stageBtns4 = paginationBtnsMobile.querySelector(".stage-btns-4"),
+    prevBtnStage4 = paginationBtnsMobile.querySelector(".stagebtn4a"),
+    nextBtnStage4 = paginationBtnsMobile.querySelector(".stagebtn4b");
+
+    const stageBtns5 = paginationBtnsMobile.querySelector(".stage-btns-5"),
+    prevBtnStage5 = paginationBtnsMobile.querySelector(".stagebtn5a"),
+    nextBtnStage5 = paginationBtnsMobile.querySelector(".stagebtn5b");
+
+    const stageBtns6 = paginationBtnsMobile.querySelector(".stage-btns-6"),
+    prevBtnStage6 = paginationBtnsMobile.querySelector(".stagebtn6a"),
+    nextBtnStage6 = paginationBtnsMobile.querySelector(".stagebtn6b");
+
+    const toolTip0 = document.getElementById("tool-tip-0"),
+    toolTip1 = document.querySelector("#tool-tip-1-mobile"),
+    toolTip2 = document.querySelector("#tool-tip-2-mobile"),
+    toolTip3 = document.querySelector("#tool-tip-3-mobile"),
+    toolTip4 = document.querySelector("#tool-tip-4-mobile"),
+    toolTip5 = document.querySelector("#tool-tip-5-mobile"),
+    toolTip6 = document.querySelector("#tool-tip-6-mobile");
     
-    const stageBtns1 = paginationBtnsMobile.querySelector(".stage-btns-1");
-    const prevBtnStage1 = paginationBtnsMobile.querySelector(".stagebtn1a");
-    const nextBtnStage1 = paginationBtnsMobile.querySelector(".stagebtn1b");
+    const stageno0 = document.querySelector(".stageno-0"),
+    stageno1 = cointanerStageMobile.querySelector('.stageno-1'),
+    stageno2 = cointanerStageMobile.querySelector('.stageno-2'),
+    stageno3 = cointanerStageMobile.querySelector('.stageno-1'),
+    stageno4 = cointanerStageMobile.querySelector('.stageno-2'),
+    stageno5 = cointanerStageMobile.querySelector('.stageno-1'),
+    stageno6 = cointanerStageMobile.querySelector('.stageno-2');
 
-    const stageBtns2 = paginationBtnsMobile.querySelector(".stage-btns-2");
-    const prevBtnStage2 = paginationBtnsMobile.querySelector(".stagebtn2a");
-    const nextBtnStage2 = paginationBtnsMobile.querySelector(".stagebtn2b");
-
-    const stageBtns3 = paginationBtnsMobile.querySelector(".stage-btns-3");
-    const prevBtnStage3 = paginationBtnsMobile.querySelector(".stagebtn3a");
-    const nextBtnStage3 = paginationBtnsMobile.querySelector(".stagebtn3b");
-
-    const stageBtns4 = paginationBtnsMobile.querySelector(".stage-btns-4");
-    const prevBtnStage4 = paginationBtnsMobile.querySelector(".stagebtn4a");
-    const nextBtnStage4 = paginationBtnsMobile.querySelector(".stagebtn4b");
-
-    const stageBtns5 = paginationBtnsMobile.querySelector(".stage-btns-5");
-    const prevBtnStage5 = paginationBtnsMobile.querySelector(".stagebtn5a");
-    const nextBtnStage5 = paginationBtnsMobile.querySelector(".stagebtn5b");
-
-    const stageBtns6 = paginationBtnsMobile.querySelector(".stage-btns-6");
-    const prevBtnStage6 = paginationBtnsMobile.querySelector(".stagebtn6a");
-    const nextBtnStage6 = paginationBtnsMobile.querySelector(".stagebtn6b");
-
-    const toolTip0 = document.getElementById("tool-tip-0");
-    const toolTip1 = document.querySelector("#tool-tip-1-mobile");
-    const toolTip2 = document.querySelector("#tool-tip-2-mobile");
-    const toolTip3 = document.querySelector("#tool-tip-3-mobile");
-    const toolTip4 = document.querySelector("#tool-tip-4-mobile");
-    const toolTip5 = document.querySelector("#tool-tip-5-mobile");
-    const toolTip6 = document.querySelector("#tool-tip-6-mobile");
-    
-    const stageno0 = document.querySelector(".stageno-0");
-    const stageno1 = cointanerStageMobile.querySelector('.stageno-1');
-    const stageno2 = cointanerStageMobile.querySelector('.stageno-2');
-    const stageno3 = cointanerStageMobile.querySelector('.stageno-1');
-    const stageno4 = cointanerStageMobile.querySelector('.stageno-2');
-    const stageno5 = cointanerStageMobile.querySelector('.stageno-1');
-    const stageno6 = cointanerStageMobile.querySelector('.stageno-2');
-
-    const stage0Elements = document.querySelectorAll('.stage-0');
-    const scrollContainer = document.querySelector('.scrollable-container');
-
-    console.log("antes del if", checkState1());
+    const stage0Elements = document.querySelectorAll('.stage-0'),
+    scrollContainer = document.querySelector('.scrollable-container');
 
     nextBtnStage1.addEventListener('click', () => {
         if (checkState1() === true) {
-            
-            console.log(checkState1());
-
             signupContent1.classList.add("hiddenElement");
             signupContent3.classList.add("hiddenElement");
             signupContent2.classList.remove("hiddenElement");

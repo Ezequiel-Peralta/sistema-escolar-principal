@@ -9,6 +9,8 @@
     
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="/style/login/index.css">
+    <link rel="stylesheet" href="/style/login/Responsibe.css">
+    
     <script src="/js/login/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
@@ -31,7 +33,7 @@
 
 <body>
     <div class="container" id="container">
-        <div class="loader"></div>
+        <div class="loader btn"></div>
         <div class="toggle-slidemenu">
             <button class="btn-open-slidemenu">
                 <div class="bar-btn-slidemenu">
@@ -43,13 +45,13 @@
                         <i class="fa-solid fa-school schoool-slidemenu"></i>
                         <span class="logo-txt-slidemenu">INSTITUTO PRIVADO DEAN FUNES</span>
                     </div>
-                    <div class="slide-sigin">
+                    <div class="slide-sigin hiddenElement">
                         <h1>Bienvenido, usuario!</h1>
                         <p class="toggle-p">Introduce tus datos para acceder al sistema de gestión escolar.</p>
                         <p class="toggle-p p-und">¿No tienes una cuenta?</p>
                         <button class="hidden btn-register-toggle" id="btn-register-slidemenu">Registrarse</button>
                     </div>
-                    <div class="slide-sigup">
+                    <div class="slide-sigup hiddenElement">
                         <h1>Hola, usuario!</h1>
                         <p class="toggle-p">Registra tus datos personales para acceder al sistema de gestión escolar.</p>
                         <p class="toggle-p p-und">¿Ya tienes una cuenta?</p>
@@ -78,7 +80,6 @@
                     <button class="hidden btn-register-toggle" id="btn-register">Registrarse</button>
                 </div>
             </div>
-            
         </div>
         <form action="" class="sign-in">
             <h1 class="sign-in-title">Iniciar sesión</h1>
@@ -166,12 +167,12 @@
                         <p class="stageno stageno-6">6</p>
                     </div>
                     <div class="info-register-mobile">
-                        <p><span class="required-info">Informacion obligatoria*</span>, <span class="optional-info">informacion opcional</span>.</p>
+                        <p><span class="required-info">Información obligatoria*</span>, <span class="optional-info">información opcional</span>.</p>
                     </div>
                 </div>
             </div>
             <div class="info-register hiddenElement">
-                <p><span class="required-info">Informacion obligatoria*</span>, <span class="optional-info">informacion opcional</span>.</p>
+                <p><span class="required-info">Información obligatoria*</span>, <span class="optional-info">información opcional</span>.</p>
             </div>
             <div class="scrollable-container">
             <div class="signup-form-content">
@@ -498,10 +499,11 @@
                 <p class="txt-email-confirm">Hemos enviado un código de uso único a
                     <span id="email-sender"></span> para confirmar su correo!
                 </p>
-                <input type="text" name="inputCode" id="inputCode" placeholder="Introducir el codigo">
+                <input type="text" name="inputCode" id="inputCode" placeholder="Introducir el código">
 
                 <p class="txt-email-invalidcode">Si <span>cierra</span> esta ventana, el código se volverá inválido.</p>
                 <div class="line"></div>
+                <button class="resend-btn">Reenviar</button>
                 <button class="accept-btn">Aceptar</button>
             </div>
             <div class="email-checked hiddenElement">
@@ -537,7 +539,7 @@
             <p class="txt-body">
                 <span>1.1.</span> Todo el contenido de este sistema, incluyendo texto, gráficos, logotipos, imágenes,
                 videos, diseños y cualquier otro material, está protegido por derechos de autor y otros derechos de
-                propiedad intelectual. Estos derechos son propiedad del Instituto Privado Dean Funes o de sus
+                propiedad intelectual. Estos derechos son propiedad del Instituto Privado Dean Funes y de sus
                 licenciantes.
                 <br>
                 <span>1.2.</span> Usted puede utilizar el contenido de este sistema para su uso personal y no comercial. No tiene
@@ -582,6 +584,9 @@
                 <span>6.1.</span> Si tiene alguna pregunta o comentario sobre estos términos y condiciones, no dude
                 en ponerse en contacto con nosotros a través de la información de contacto proporcionada en el sistema.
             </p>
+        </div>
+        <div class="terms-footer">
+            <button class="btn-accept-terms">aceptar</button>
         </div>
     </div>
     <div class="popupAnimation hiddenElement">
